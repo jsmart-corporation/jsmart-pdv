@@ -15,8 +15,7 @@ const StyledDialogTitle = styled(DialogTitle)`
   color: #fff;
   text-align: center;
   box-shadow: 0 0 0.4rem #000;
-  padding: 16px;
-
+  height: 65px
 
 `;
 export default function DrawerShell(props: DrawerShellProps) {

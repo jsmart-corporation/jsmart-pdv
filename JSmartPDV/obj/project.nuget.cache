@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CArbAJhTnNJ4/ctyRGbHgBJT0GT+E4ZUG6xpJNZyiQx57w6xLsss4dYIs2qt9g0GfRKQzF4F5KG/yxo9z9VOCA==",
+  "dgSpecHash": "Tga0hFOmQwjQm8eDbww/NHno3DJy8mVb3duKr3ypr47aqIMufTGi5ar3hTCPHHfdAu8Yz3eSKHKE6TETkGbvlw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Pedroca\\Desktop\\APIJSMart\\JSmartPDV\\JSmartPDV.csproj",
+  "projectFilePath": "C:\\Users\\Pedroca\\Documents\\GitHub\\jsmart-pdv\\JSmartPDV\\JSmartPDV.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Pedroca\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Pedroca\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.11\\microsoft.aspnetcore.openapi.7.0.11.nupkg.sha512",

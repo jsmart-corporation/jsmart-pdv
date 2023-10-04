@@ -1765,11 +1765,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Pedroca\\Desktop\\APIJSMart\\JSmartPDV\\JSmartPDV.csproj",
+      "projectUniqueName": "C:\\Users\\Pedroca\\Documents\\GitHub\\jsmart-pdv\\JSmartPDV\\JSmartPDV.csproj",
       "projectName": "JSmartPDV",
-      "projectPath": "C:\\Users\\Pedroca\\Desktop\\APIJSMart\\JSmartPDV\\JSmartPDV.csproj",
+      "projectPath": "C:\\Users\\Pedroca\\Documents\\GitHub\\jsmart-pdv\\JSmartPDV\\JSmartPDV.csproj",
       "packagesPath": "C:\\Users\\Pedroca\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Pedroca\\Desktop\\APIJSMart\\JSmartPDV\\obj\\",
+      "outputPath": "C:\\Users\\Pedroca\\Documents\\GitHub\\jsmart-pdv\\JSmartPDV\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Pedroca\\AppData\\Roaming\\NuGet\\NuGet.Config",

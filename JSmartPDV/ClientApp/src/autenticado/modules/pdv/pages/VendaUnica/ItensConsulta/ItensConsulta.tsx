@@ -1,11 +1,11 @@
 import { MouseEventHandler, useContext, useEffect, useState } from 'react'
 import './style.css'
 import { CircularProgress } from '@mui/material'
-import { JSTextField, JSTextFieldLarge } from '../../../../../../UniversalComponents/MUI/TextField/CTextField'
+import {JSTextFieldLarge } from '../../../../../../UniversalComponents/MUI/TextField/CTextField'
 import {BiBarcodeReader} from 'react-icons/bi'
 import {HiPlus} from 'react-icons/hi'
 import { Ripple } from 'primereact/ripple'
-import Logo from '../../../../../../assets/LogoJS.png'
+import Logo from '../../../../../../assets/LogoMarca.svg'
 import LogoMiddle from '../../../../../../assets/Logo.svg'
 import * as AxiosServices from '../../../services/axiosservices/AXIOSService'
 import * as SwrServices from '../../../services/swrservices/SWRServices'
@@ -14,6 +14,7 @@ import * as PDVServices from '../../../contexts/PDVServices'
 import React from 'react'
 import { maskCurrency, removerLetrasEPontos } from '../../../../../../common/utils'
 import ScanCodBarra from '../../../../../../UniversalComponents/ScanCodBarra/ScanCodBarra'
+import moment from 'moment'
 
 export default function ItensConsulta() {
     const [qtd,setQtd] = useState<number>(1)
@@ -23,11 +24,11 @@ export default function ItensConsulta() {
     const [valorSelecionado, setValorSelecionado] = useState<Interfaces.Produto | null>(null);
     const {AdicionaItem} = useContext(PDVServices.TransacaoContext);
 
-    const [time, setTime] = useState(new Date().toLocaleTimeString());
+    const [time, setTime] = useState(new Date());
 
     useEffect(() => {
       const intervalID = setInterval(() => {
-        setTime(new Date().toLocaleTimeString());
+        setTime(new Date());
       }, 1000);
 
       return () => {
@@ -117,8 +118,7 @@ export default function ItensConsulta() {
               <div className='container-input'><BiBarcodeReader className="icon-filtro"/>{qtd > 1 && <div className='quantidade'><span>{qtd}x</span></div>}</div>
             ),
             endAdornment: (
-                <React.Fragment>
-                    
+                <React.Fragment> 
                   {pesquisa && <div className='button-add p-ripple' onClick={() => BuscarCodigoBarra(pesquisa)}><HiPlus className="icon"/><Ripple/></div>}
                 </React.Fragment>
             ),
@@ -139,7 +139,7 @@ export default function ItensConsulta() {
       }
       <div className="bottom">
             <img src={Logo} />
-            <span>{time.toString().substring(0,5)}</span>
+            <span>{moment(time).format('HH:mm')}</span>
       </div>
     </div>
   )

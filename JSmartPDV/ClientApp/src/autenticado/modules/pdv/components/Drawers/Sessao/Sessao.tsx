@@ -20,6 +20,7 @@ export default function Sessao() {
   const {VerificarVendaAndamento} = useContext(ServiceContext.TransacaoContext)
   const {caixa,mutateCaixa} = useContext(ServiceContext.CaixaContext)
   const {caixaResumo,isLoadingCaixaResumo} = SWRServices.useCaixaResumo(drawerSessaoAberto,caixa?.id)
+
   const FinalizarSessao = async () => {
      
       try{
@@ -52,7 +53,7 @@ export default function Sessao() {
                           Valor
                         </span>
                       </div>
-                      <Divider></Divider>
+                      <Divider style={{marginBottom: 5}}></Divider>
                       {
                         (caixaResumo?.dinheiro?? 0) > 0 && 
                         <div className="item-info">
@@ -125,7 +126,7 @@ export default function Sessao() {
                         </div> 
                         
                       }
-                      <Divider></Divider>
+                      <Divider style={{marginTop: 5}}></Divider>
                       <div className="total">
                         <span className="forma">
                           Total
@@ -200,7 +201,7 @@ const ResumoTransacaoItem = ({item}:{item: Interfaces.TransacaoResumo}) => {
       </div>
       <div className="right"> 
         {
-          <span>{moment(item.dataVenda).format('LT')}</span>
+          <span>{moment(item.dataVenda).calendar()}</span>
         }
         <div className="botao-acao p-ripple" onClick={(event) => menuRight.current?.toggle(event)}>
           <SlOptionsVertical className="icon"/>
