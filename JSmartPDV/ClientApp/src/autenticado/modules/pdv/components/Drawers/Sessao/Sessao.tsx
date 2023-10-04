@@ -208,7 +208,7 @@ const ResumoTransacaoItem = ({item}:{item: Interfaces.TransacaoResumo}) => {
           <Ripple/>
 
         </div>
-        <Menu style={{marginTop: '5px'}} model={items} popup ref={menuRight} id="popup_menu_right" popupAlignment="left" />
+        <Menu style={{marginTop: '5px',borderRadius: '5px'}} model={items} popup ref={menuRight} id="popup_menu_right" popupAlignment="left" />
 
       </div>
     </div>

@@ -61,6 +61,9 @@ export default function Pagamento() {
     
   }, [drawerPagamentoAberto, transacao.Total, totalPago]);
   useEffect(() => {
+    if(tipoSelecionado !== Interfaces.FormaPagamento.Dinheiro){
+      setMetodoSelecionado(null)
+    }
     setNsu('')
     setValor('0.00')
   },[tipoSelecionado])
