@@ -1,0 +1,36 @@
+.login{
+    width: 100vw;
+    height: 100vh;
+    background: var(--background-secondary);
+    display: flex;
+    flex-direction: column;
+}
+
+
+.login > .card {
+    display: flex;
+    width: 400px;
+    height: 300px;
+    border-radius: 5px;
+    background: var(--background-primary);
+    margin: auto;
+    box-shadow: 0 0 0.8rem #00000036;
+    z-index: 2;
+}
+.login > .card > .content{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+}
+.login > .card > .content > .logo{
+    width: 80px;
+}
+.login > .card > .content > .inputs{
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 50px);
+    margin-top: 20px;
+    gap: 10px;
+}

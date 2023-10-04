@@ -1,0 +1,26 @@
+.nova-os-title{
+    width: 100%;
+    background: var(--green);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.nova-os-title > .left{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.nova-os-title > .left > .back-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+}
+.nova-os-title > .left > .back-button:hover{
+    background: #0000003d;
+}

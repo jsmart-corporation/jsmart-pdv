@@ -1,0 +1,60 @@
+.ordens-servico{
+    width: 100vw;
+    height: calc(100vh - 65px);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.ordens-servico > .header{
+   
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+.ordens-servico > .header > .top{
+    
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.ordens-servico > .header > .top > .icon-container{
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0.1rem #00000054;
+    border-radius: 5px;
+    color: var(--text);
+    font-size: 1.5rem;
+}
+.ordens-servico > .header > .top > span{
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--text);
+}
+.ordens-servico > .header > .filters{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.ordens-servico > .header > .filters > .left{
+    width: 300px;
+}
+.ordens-servico > .header > .filters > .right > .nova-ordem-servico{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 15px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    background: var(--green);
+    color: #FFF;
+    transition: 0.1s ease-in-out;
+}
+.ordens-servico > .grid{
+    width: 100%;
+    height: calc(100vh - 150px);
+   
+}

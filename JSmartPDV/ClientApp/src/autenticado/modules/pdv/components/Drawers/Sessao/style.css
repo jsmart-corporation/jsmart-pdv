@@ -1,0 +1,116 @@
+.sessao{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 15px;
+    overflow: hidden;
+}
+.sessao > .pagamentos-efetuados{
+    display: flex;
+    height: fit-content;
+    width: 100%;
+    flex-direction: column;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 0.8rem #0000002c;
+}
+.sessao > .pagamentos-efetuados > .item-info{
+    display: flex;
+    justify-content: space-between;
+}
+.sessao > .pagamentos-efetuados > .info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .9rem;
+    color: var(--text);
+}
+.sessao > .pagamentos-efetuados > .info > .valor,
+.sessao > .pagamentos-efetuados > .info > .forma{
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.sessao > .pagamentos-efetuados > .total{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.4rem !important;
+    color: var(--text);
+    font-weight: 500;
+}
+.sessao > .resumo{
+    display: flex;
+    height: fit-content;
+    flex: 1;
+    flex-direction: column;
+    border-radius: 5px;
+    gap: 10px;
+    margin-top: 20px;
+    overflow: auto;
+}
+.sessao > .controle{
+    display: flex;
+    height: fit-content;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: var(--text);
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 0.8rem #0000002c;
+    margin-top: 20px;
+}
+.sessao > .resumo > .resumo-transacao-item{
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    padding: 10px;
+    background: var(--background-secondary);
+}
+.sessao > .resumo > .resumo-transacao-item > .left{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.sessao > .resumo > .resumo-transacao-item > .right{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 5px;
+}
+.sessao > .resumo > .resumo-transacao-item > .right > .botao-acao{
+    background: var(--green);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+.sessao > .resumo > .resumo-transacao-item > .left > .numero{
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.finalizar-sessao{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    background: #1976d2;
+    cursor: pointer;
+    gap: 5px;
+}
+.finalizar-sessao > span{
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.finalizar-sessao > .icon{
+    color: #fff;
+    font-size: 1.1rem;
+}

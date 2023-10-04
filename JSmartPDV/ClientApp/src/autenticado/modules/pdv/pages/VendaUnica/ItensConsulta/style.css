@@ -1,0 +1,134 @@
+.itens-consulta{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 10px 0 10px 10px;
+    gap: 10px;
+}
+.itens-consulta .icon-filtro{
+    font-size: 2rem;
+    color: var(--green);
+}
+.itens-consulta .container-input{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.itens-consulta .container-input > .quantidade{
+    display: flex;
+    padding: 0 10px;
+    min-height: 30px;
+    color: #fff;
+    border-radius: 5px;
+    background: #9e9e9e;
+    align-items: center;
+    justify-content: center;
+}
+.itens-consulta  .button-add{
+    cursor: pointer;
+    min-height: 40px;
+    min-width: 40px;
+    background: var(--green);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.itens-consulta  .button-add > .icon{
+    font-size: 1.5rem;
+    color: #fff;
+}
+.itens-consulta > .top{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 1px 10px;
+    gap: 5px;
+}
+.itens-consulta > .middle-content{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 8px;
+    padding: 1px 10px;
+    overflow: auto;
+    height: 100%;
+}
+.itens-consulta .middle-content > .logo{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    opacity: 0.2;
+    width: 100%;
+    height: 100%;
+}
+.itens-consulta .middle-content > .logo > img{
+    width: 500px;
+}
+.itens-consulta > .bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.itens-consulta > .bottom > img{
+    width: 90px;
+}
+.itens-consulta > .bottom > span{
+    font-weight: 600;
+    font-size: 4rem;
+    padding: 0 10px;
+    color: var(--green);
+}
+/* RECOMENDADOS COMPONENTE */
+.recomendados-card{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    min-height: 100px;
+    gap: 10px;
+    background: var(--background-secondary);
+    border-radius: 5px;
+    height: fit-content;
+    cursor: pointer;
+}
+.recomendados-card > .image-content { 
+    width: 120px;
+    height: 80px;
+    min-width: 120px;
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.recomendados-card > .image-content>  img{
+    width: 100px;
+    height: 80px;
+    min-width: 120px;
+    border-radius: 5px;
+    background: #000;
+}
+.recomendados-card > .labels{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--text);
+    min-height: 80px;
+    width: 100%;
+    transition: 0.1s ease-in-out;
+}
+.recomendados-card > .labels > .desc{
+    font-size: 1.2rem;
+}
+.recomendados-card > .labels > .valor{
+    align-self: flex-end;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.recomendados-card:hover{
+    background: var(--green);
+}
+.recomendados-card:hover > .labels{
+    color: #fff;
+}
