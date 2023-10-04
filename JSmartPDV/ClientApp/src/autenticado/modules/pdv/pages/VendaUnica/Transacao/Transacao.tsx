@@ -18,6 +18,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import SallerFinish from '../../../../../../UniversalComponents/SallerFinish/SallerFinish'
 import { TransacaoStatus } from '../../../contexts/TransacaoContext'
+import EmptyCartSVG from '../../../components/EmptyCartSVG/EmptyCartSVG'
 
 export default function Transacao() {
     const {transacao,CancelarTransacao,RemoveItem,AdicionaCliente,RemoveClienteTransacao,statusTransacao,ultimaTransacaoTroco,NovaTransacao} = useContext(PDVServices.TransacaoContext)
@@ -69,11 +70,14 @@ export default function Transacao() {
                     :
                 <React.Fragment>
                     <div className="itens-transacao">
+                        {transacao.Itens.length === 0 ? <EmptyCartSVG/> :
                         <div className="itens">
                             {
                                 transacao.Itens.map((x,index) => <ItemTransacao item={x} key={index} deletar={deletar} onClick={() => HandleClickItemTransacao(index)}/>)
                             }
                         </div>
+                        }
+                        
                     </div>
                     
                     <div className="cliente">                          

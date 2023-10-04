@@ -15,6 +15,7 @@ import { maskCurrency } from '../../../../../../common/utils'
 import moment from 'moment'
 import { MenuItem } from 'primereact/menuitem'
 import { Menu } from 'primereact/menu'
+import React from 'react'
 export default function Sessao() {
   const {FechaDrawerSessao,drawerSessaoAberto} = useContext(ComponentsContext.SessaoContext)
   const {VerificarVendaAndamento} = useContext(ServiceContext.TransacaoContext)
@@ -31,6 +32,13 @@ export default function Sessao() {
       }finally{
         
       }
+  }
+  const GetTotalValue = () => {
+    if(caixaResumo){
+      return caixaResumo.credito + caixaResumo.debito + caixaResumo.dinheiro + caixaResumo.outros + caixaResumo.aporte - caixaResumo.retirada
+    }else{
+      return 0
+    }
   }
   return (
     <DrawerShell
@@ -53,86 +61,93 @@ export default function Sessao() {
                           Valor
                         </span>
                       </div>
-                      <Divider style={{marginBottom: 5}}></Divider>
                       {
-                        (caixaResumo?.dinheiro?? 0) > 0 && 
-                        <div className="item-info">
-                          <span className="tipo">
-                            Dinheiro
-                          </span>
-                          <span className="valor">
-                            {maskCurrency((caixaResumo?.dinheiro?? 0 )- (caixaResumo?.retirada?? 0))}
-                          </span>
-                        </div> 
-                        
+                        GetTotalValue() > 0 ? 
+                        <React.Fragment>
+                          <Divider style={{marginBottom: 5}}></Divider>
+                            {
+                              (caixaResumo?.dinheiro?? 0) > 0 && 
+                              <div className="item-info">
+                                <span className="tipo">
+                                  Dinheiro
+                                </span>
+                                <span className="valor">
+                                  {maskCurrency((caixaResumo?.dinheiro?? 0 )- (caixaResumo?.retirada?? 0))}
+                                </span>
+                              </div> 
+                              
+                            }
+                            {
+                              (caixaResumo?.debito?? 0) > 0 && 
+                              <div className="item-info">
+                                <span className="tipo">
+                                  Débito
+                                </span>
+                                <span className="valor">
+                                  {maskCurrency(caixaResumo?.debito)}
+                                </span>
+                              </div> 
+                              
+                            }
+                            {
+                              (caixaResumo?.credito?? 0) > 0 && 
+                              <div className="item-info">
+                                <span className="tipo">
+                                  Crédito
+                                </span>
+                                <span className="valor">
+                                  {maskCurrency(caixaResumo?.credito)}
+                                </span>
+                              </div> 
+                              
+                            }
+                            {
+                              (caixaResumo?.outros?? 0) > 0 && 
+                              <div className="item-info">
+                                <span className="tipo">
+                                  Outros
+                                </span>
+                                <span className="valor">
+                                  {maskCurrency(caixaResumo?.outros)}
+                                </span>
+                              </div> 
+                              
+                            }
+                            {
+                              (caixaResumo?.aporte?? 0) > 0 && 
+                              <div className="item-info">
+                                <span className="tipo">
+                                  Aporte
+                                </span>
+                                <span className="valor">
+                                  {maskCurrency(caixaResumo?.aporte)}
+                                </span>
+                              </div> 
+                              
+                            }
+                            {
+                              (caixaResumo?.retirada?? 0) > 0 && 
+                              <div className="item-info">
+                                <span className="tipo">
+                                  Retirada
+                                </span>
+                                <span className="valor">
+                                  {maskCurrency(caixaResumo?.retirada)}
+                                </span>
+                              </div> 
+                              
+                            }
+                          <Divider style={{marginTop: 5}}></Divider>
+                        </React.Fragment>
+                        : null
                       }
-                      {
-                        (caixaResumo?.debito?? 0) > 0 && 
-                        <div className="item-info">
-                          <span className="tipo">
-                            Débito
-                          </span>
-                          <span className="valor">
-                            {maskCurrency(caixaResumo?.debito)}
-                          </span>
-                        </div> 
-                        
-                      }
-                      {
-                        (caixaResumo?.credito?? 0) > 0 && 
-                        <div className="item-info">
-                          <span className="tipo">
-                            Crédito
-                          </span>
-                          <span className="valor">
-                            {maskCurrency(caixaResumo?.credito)}
-                          </span>
-                        </div> 
-                        
-                      }
-                      {
-                        (caixaResumo?.outros?? 0) > 0 && 
-                        <div className="item-info">
-                          <span className="tipo">
-                            Outros
-                          </span>
-                          <span className="valor">
-                            {maskCurrency(caixaResumo?.outros)}
-                          </span>
-                        </div> 
-                        
-                      }
-                      {
-                        (caixaResumo?.aporte?? 0) > 0 && 
-                        <div className="item-info">
-                          <span className="tipo">
-                            Aporte
-                          </span>
-                          <span className="valor">
-                            {maskCurrency(caixaResumo?.aporte)}
-                          </span>
-                        </div> 
-                        
-                      }
-                      {
-                        (caixaResumo?.retirada?? 0) > 0 && 
-                        <div className="item-info">
-                          <span className="tipo">
-                            Retirada
-                          </span>
-                          <span className="valor">
-                            {maskCurrency(caixaResumo?.retirada)}
-                          </span>
-                        </div> 
-                        
-                      }
-                      <Divider style={{marginTop: 5}}></Divider>
+                      
                       <div className="total">
                         <span className="forma">
                           Total
                         </span>
                         <span className="Valor">
-                          {caixaResumo ? maskCurrency(caixaResumo.credito + caixaResumo.debito + caixaResumo.dinheiro + caixaResumo.outros + caixaResumo.aporte - caixaResumo.retirada) : "R$0,00"}
+                          {caixaResumo ? maskCurrency(GetTotalValue()) : "R$0,00"}
                         </span>
                       </div>
                     </div>

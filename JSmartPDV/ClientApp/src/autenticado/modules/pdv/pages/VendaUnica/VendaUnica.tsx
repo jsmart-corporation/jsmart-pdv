@@ -3,31 +3,19 @@ import { useContext, useEffect, useRef } from 'react'
 import * as PDVContext from '../../contexts/PDVServices'
 import * as ComponentsContext from '../../components/ComponentsServices'
 import './style.css'
-import lottie from 'lottie-web';
 import ItensConsulta from './ItensConsulta/ItensConsulta'
 import Transacao from './Transacao/Transacao'
-import CaixaAnim from '../../../../../assets/CaixaSVG.json'
+import CaixaSVG from '../../components/CaixaSVG/CaixaSVG'
 export default function VendaUnica() {
   const {caixa} = useContext(PDVContext.CaixaContext)
   const {AbreDialogoAbrirCaixa} = useContext(ComponentsContext.AbrirCaixaDialogoContext)
-  const containerRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
         document.title = "JSmart - Venda"
     },[])
     
 
-  useEffect(() => {
-    if (containerRef.current) {
-      lottie.loadAnimation({
-        container: containerRef.current,
-        animationData: CaixaAnim,
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-      });
-    }
-  }, []);
+ 
     const handleSplitterDragEnd = (position: SplitterResizeEndEvent) => {
       let valor = position.sizes
       localStorage.setItem('splitterPosition', JSON.stringify(valor)); // Converte para string antes de salvar
@@ -44,12 +32,8 @@ export default function VendaUnica() {
   return (
     <div className='venda-unica'>
       {
-        !caixa ? <div className="abrir-caixa">
-        <div ref={containerRef} style={{ width: '300px', height: '300px' }}/>
-          <div className="button-abrir-caixa" onClick={() => AbreDialogoAbrirCaixa()}>
-            <span>Abrir Caixa</span>
-          </div>
-        </div> 
+        !caixa ? 
+          <CaixaSVG onClick={() => AbreDialogoAbrirCaixa()}/>
           : 
         <>
           <Splitter

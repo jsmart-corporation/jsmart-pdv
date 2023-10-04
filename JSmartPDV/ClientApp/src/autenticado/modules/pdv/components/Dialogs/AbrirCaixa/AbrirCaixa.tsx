@@ -27,6 +27,7 @@ const Transition = React.forwardRef(function Transition(
       </Draggable>
     );
   }
+  
 export default function DialogoAbrirCaixa() {
     const { DialogoAbrirCaixaAberto,FechaDialogoAbrirCaixa} = useContext(ComponentsContext.AbrirCaixaDialogoContext)
     const {mutateCaixa} = useContext(PDVContexts.CaixaContext)
@@ -76,7 +77,7 @@ export default function DialogoAbrirCaixa() {
                 </div>
                 <div className="right">
                     <ButtonAbrirCaixa type='cancel' label='Cancelar' onClick={() => FechaDialogoAbrirCaixa()}/>
-                    <ButtonAbrirCaixa type='submit' label="Iniciar" disabled={Number.parseFloat(valor) === 0} onClick={() => Abrir()}/>
+                    <ButtonAbrirCaixa type='submit' label="Iniciar" onClick={() => Abrir()}/>
                 </div>
             </div>
         </div>

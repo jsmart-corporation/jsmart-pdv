@@ -1,0 +1,23 @@
+.abrir-caixa{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 400px;
+}
+.abrir-caixa > .button-abrir-caixa{
+    display: flex;
+    background: var(--green);
+    width: 300px;
+    height: 40px;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    transition: .1s ease-in-out;
+    cursor: pointer;
+}
+.abrir-caixa > .button-abrir-caixa:hover{
+    opacity: 0.8;
+}

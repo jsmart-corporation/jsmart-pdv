@@ -5,7 +5,7 @@ import PrimeReact from "primereact/api"
 //core
 import "primereact/resources/primereact.min.css";          
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import './common/Styles/ReactToastify.css';
 import moment from "moment";
 import 'moment/locale/pt-br';
 import { ContextGeralProvider } from "./autenticado/context/ContextGeral";
