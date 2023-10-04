@@ -4,6 +4,7 @@
     flex: 1;
     padding: 10px 10px 10px 0;
     gap: 10px;
+
 }
 .transacao > .top{
     display: flex;
@@ -64,19 +65,24 @@
     flex: 1;
     align-items: center;
     justify-content: space-between;
-    gap: 2px;
     border: 1px solid #00000054;
     border-radius: 5px;
     padding: 0 10px;
     height: 100%;
+    
 }
 .transacao > .top > .cliente > .cliente-content > .left{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
 }
-.transacao > .top > .cliente > .cliente-content > .left > .nome{
+.transacao > .top > .cliente > .cliente-content > .left{
+    font-size: 1.2rem;
+    line-height: 1.2
+}
+.transacao > .top > .cliente > .cliente-content > .left  .cpf,
+.transacao > .top > .cliente > .cliente-content > .left  .nome{
     font-weight: 600;
+    
 }
 .transacao > .top > .cliente > .cliente-content > .right{
     display: flex;

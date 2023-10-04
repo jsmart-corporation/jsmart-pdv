@@ -86,8 +86,8 @@ export default function Transacao() {
                         {transacao.Cliente ?  
                             <div className="cliente-content">
                                 <div className="left">
-                                    <span className="nome">Cliente: {transacao.Cliente.nome}</span>
-                                    <span className="cpf">CPF: {transacao.Cliente.cpf}</span>
+                                    <span >Cliente: <span className="nome"> {transacao.Cliente.nome}</span></span>
+                                    <span >CPF: <span className="cpf">{transacao.Cliente.cpf}</span></span>
                                 </div>
                                 <div className="right">
                                     <div className="button-remover" onClick={() => RemoveClienteTransacao()}>
@@ -148,7 +148,7 @@ const ItemTransacao = ({item,deletar,onClick} : {item: Interfaces.ItemTransacao,
                 <div className="quantidade">
                     {!deletar ? 
                         <span className="qtd">
-                            {item.quantidade}
+                            {item.quantidade}x
                         </span>
                         :
                         <AiFillDelete className="icon"/>

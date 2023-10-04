@@ -77,7 +77,7 @@ function App() {
     <ContextGeralProvider>
       <CaixaProvider>
         <ModuleRoutes/>
-        <ToastContainer/>
+        <ToastContainer position="bottom-left"/>
       </CaixaProvider>
     </ContextGeralProvider>
    
