@@ -82,14 +82,14 @@ export function NavigationMenu({fechaDrawer} : {fechaDrawer(): void}) {
       placeholder: "Cadastro de Categorias",
       isPage: true
     },
-    // {
-    //   key: 8,
-    //   icon: LuComputer,
-    //   function: () => null,
-    //   link: '/administrativo/estacoes',
-    //   placeholder: "Estações",
-    //   isPage: true
-    // },
+    {
+      key: 8,
+      icon: LuComputer,
+      function: () => null,
+      link: '/administrativo/estacoes',
+      placeholder: "Estações",
+      isPage: true
+    },
  
   ]
 

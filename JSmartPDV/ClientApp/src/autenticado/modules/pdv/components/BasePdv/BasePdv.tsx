@@ -42,7 +42,7 @@ export default function BasePdv({children}: BasePdvProps) {
         </div>
         <div className="right">
             <div className="estacao-content">
-            {/* <StyledFormControl  size="small">
+            <StyledFormControl  size="small">
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -67,7 +67,7 @@ export default function BasePdv({children}: BasePdvProps) {
                     )
                 }
               </Select>
-            </StyledFormControl> */}
+            </StyledFormControl>
             </div>
             {caixa && <div className="sessao-button" onClick={() => AbreDrawerSessao()}>
               <div className="span">Sessão</div>

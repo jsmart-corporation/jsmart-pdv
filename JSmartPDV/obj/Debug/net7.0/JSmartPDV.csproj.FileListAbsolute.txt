@@ -279,3 +279,4 @@ C:\Users\Pedroca\Documents\GitHub\jsmart-pdv\JSmartPDV\obj\Debug\net7.0\refint\J
 C:\Users\Pedroca\Documents\GitHub\jsmart-pdv\JSmartPDV\obj\Debug\net7.0\JSmartPDV.pdb
 C:\Users\Pedroca\Documents\GitHub\jsmart-pdv\JSmartPDV\obj\Debug\net7.0\JSmartPDV.genruntimeconfig.cache
 C:\Users\Pedroca\Documents\GitHub\jsmart-pdv\JSmartPDV\obj\Debug\net7.0\ref\JSmartPDV.dll
+C:\Users\Pedroca\Documents\GitHub\jsmart-pdv\JSmartPDV\bin\Debug\net7.0\ClientApp\src\assets\EmptyCart.json
