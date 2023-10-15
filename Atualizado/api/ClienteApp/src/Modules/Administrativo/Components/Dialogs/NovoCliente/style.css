@@ -1,0 +1,74 @@
+.novo-cliente{
+    display: flex;
+    flex-direction: column;
+}
+.novo-cliente > .header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--green);
+    height: 60px;
+    padding: 0 20px;
+    box-shadow: 0 0 0.4rem #000;
+}
+.novo-cliente > .header > span{
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.novo-cliente > .header > .button-close{
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.novo-cliente > .header > .button-close:hover{
+    background: #0000001e;
+}
+.novo-cliente > .middle{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 15px;
+    gap: 10px;
+}
+.novo-cliente > .middle > .bottom{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.novo-cliente > .bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    background: var(--green);
+    height: 50px;
+    box-shadow: 0 0 0.4rem #0000006c;
+}
+.novo-cliente > .bottom > .button-salvar{
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.novo-cliente > .bottom > .button-remove{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+}
+.novo-cliente > .bottom > .button-remove:hover,
+.novo-cliente > .bottom > .button-salvar:hover{
+    background: #0000001e;
+}
+.novo-cliente > .bottom > .button-salvar.disabled{
+    pointer-events: none;
+    color: #b3b3b3;
+}

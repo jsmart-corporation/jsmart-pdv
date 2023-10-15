@@ -39,6 +39,7 @@ export default function BasePdv({children}: BasePdvProps) {
             )}
             <Ripple />  
           </div>
+          <h3>JSmart PDV</h3>
         </div>
         <div className="right">
             <div className="estacao-content">

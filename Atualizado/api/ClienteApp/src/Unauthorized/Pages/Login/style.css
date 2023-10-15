@@ -1,0 +1,118 @@
+.main-login {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background: var(--background-primary);
+  }
+  .main-login > .left {
+    position: relative;
+    display: flex;
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+    background-position: center;
+  }
+  .main-login > .left::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px; /* Largura do degradê */
+    height: 100%;
+    background-image: linear-gradient(
+      to left,
+  
+      rgba(0, 0, 0, 1),
+      rgba(0, 0, 0, 0)
+    );
+  }
+  .main-login > .left > img {
+    width: 100%;
+    object-fit: cover;
+    background-position: center;
+  }
+  .main-login > .right {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+    overflow: auto;
+    padding: 150px;
+  }
+  .main-login > .right > .login-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+  }
+  .main-login > .right > .login-card > img {
+    width: 200px;
+    align-self: center;
+    margin-bottom: 30px;
+  }
+
+  .main-login > .right > .login-card > .ger-label {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-top: 10px;
+    align-self: center;
+  }
+  .main-login > .right > .login-card > .inputs {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    gap: 20px;
+  }
+  
+  .main-login > .right > .login-card > .button-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    border-radius: 5px;
+    background: var(--green);
+    font-size: 1.2rem;
+    margin-top: 20px;
+    cursor: pointer;
+    color: #fff;
+  }
+  .main-login > .right > .login-card > .button-login:hover {
+    opacity: 0.5;
+  }
+  .main-login .right > .login-card .inputs > .p-password > .p-inputtext {
+    display: flex;
+    flex: 1;
+  }
+  @media only screen and (max-width: 1400px) {
+    .main-login > .right {
+      padding: 70px;
+    }
+  }
+  @media only screen and (max-width: 1062px) {
+    .main-login > .right > .login-card > .singup-content {
+      flex-direction: column;
+    }
+    .main-login > .right > .login-card > .portal-label,
+    .main-login > .right > .login-card > .ger-label {
+      align-self: center;
+    }
+    .main-login > .right {
+      padding: 70px;
+    }
+  }
+  @media only screen and (max-width: 750px) {
+    .main-login > .right > .login-card > .singup-content {
+      flex-direction: column;
+    }
+    .main-login > .left {
+      display: none;
+    }
+  
+    .main-login > .right > .login-card > .portal-label,
+    .main-login > .right > .login-card > .ger-label {
+      align-self: center;
+    }
+    .main-login > .right {
+      padding: 50px;
+    }
+  }

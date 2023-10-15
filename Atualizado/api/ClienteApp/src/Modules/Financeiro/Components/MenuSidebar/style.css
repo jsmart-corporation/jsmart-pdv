@@ -1,0 +1,71 @@
+.command-button,
+.nav-button{
+    position: relative;
+    height: 50px;
+    min-height: 50px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--background-primary);
+    cursor: pointer;
+    color: var(--text);
+    text-decoration: none;
+    padding: 0 20px;
+    transition: 0.1s ease-in-out;
+}
+.nav-button::before{
+    content: '';
+    position: absolute;
+    height: 0;
+    border-radius: 5px;
+    width: 5px;
+    background: var(--green);
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.1s ease-in-out;
+}
+.nav-button.active::before{
+    height: 50%;
+    
+}
+.command-button:hover,
+.nav-button:hover{
+    transform: translateX(20px);
+}
+.nav-button > .icon,
+.command-button > .icon{
+    font-size: 1.3rem;
+}
+.command-button.disabled,
+.nav-button:not(.active).disabled{
+    pointer-events: none;
+    opacity: 0.5;
+}
+.nav-button.active{
+    box-shadow: 0 0 0.1rem #00000063;
+    pointer-events: none;
+}
+.tabs-navigator{
+    display: flex;
+    flex-direction: column;
+}
+.tabs-navigator > .placeholder{
+    position: sticky;
+    top: 0;
+    background: var(--green);
+    margin: 0 10px;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 0.8rem #00000063;
+    z-index: 5;
+    padding: 10px;
+
+}
+.tabs-navigator > .childrens{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}

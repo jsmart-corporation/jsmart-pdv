@@ -1,0 +1,8 @@
+.venda{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: calc(100vh - 65px);
+    border-top-left-radius: 5px;
+    background: var(--background-primary);
+}

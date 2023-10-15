@@ -1,0 +1,75 @@
+.nova-conta-bancaria{
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+}
+.nova-conta-bancaria > .header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--green);
+    height: 60px;
+    padding: 0 20px;
+    box-shadow: 0 0 0.4rem #000;
+}
+.nova-conta-bancaria > .header > span{
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.nova-conta-bancaria > .header > .button-close{
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nova-conta-bancaria > .header > .button-close:hover{
+    background: #0000001e;
+}
+.nova-conta-bancaria > .middle{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 15px;
+    gap: 10px;
+}
+.nova-conta-bancaria > .middle > .bottom{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.nova-conta-bancaria > .bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    background: var(--green);
+    height: 50px;
+    box-shadow: 0 0 0.4rem #0000006c;
+}
+.nova-conta-bancaria > .bottom > .button-salvar{
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.nova-conta-bancaria > .bottom > .button-remove{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+}
+.nova-conta-bancaria > .bottom > .button-remove:hover,
+.nova-conta-bancaria > .bottom > .button-salvar:hover{
+    background: #0000001e;
+}
+.nova-conta-bancaria > .bottom > .button-salvar.disabled{
+    pointer-events: none;
+    color: #b3b3b3;
+}

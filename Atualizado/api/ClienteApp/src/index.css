@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+  font-family: 'Poppins', sans-serif !important;
+  
+}
+.p-splitter .p-splitter-gutter{
+  background: transparent !important;
+}
+:root{
+  --insetShadow: #3b3b3b;
+  --background-primary: #FFFFFF;
+  --background-secondary: #f3f3f3;
+  --text: #000000af;
+  --green: #504793 ;
+  --buttons: #18bc9bb1;
+  --hover-table-row: #9f9f9f2e;
+}
+
+[data-theme="dark"]{
+  --background-primary: #272727;
+  --background-secondary: #202020;
+  --text: #FFF;
+
+}
+
+div::-webkit-scrollbar {
+  width: 0.3rem;
+  height: 0.5rem;
+  z-index: 1;
+}
+div::-webkit-scrollbar-thumb {
+  border-radius: 0.5rem;
+  background: var(--green);
+
+  transition: 0.2s ease-in-out;
+  visibility: hidden;
+}
+
+div:hover::-webkit-scrollbar-thumb {
+  visibility: visible;
+}

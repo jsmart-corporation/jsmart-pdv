@@ -24,6 +24,9 @@
     gap: 10px;
     margin-left: 10px;
 }
+.base-pdv > .top > .left > h3{
+    color: #fff;
+}
 .base-pdv > .top > .right{
     margin-right: 10px;
     gap: 10px;

@@ -37,6 +37,7 @@ export default function BaseFinanceiro({
             )}
             <Ripple />  
           </div>
+          <h3>Administrativo</h3>
         </div>
         <div className="right">
             {/* <div className="estacao-content">

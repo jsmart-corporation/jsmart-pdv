@@ -1,0 +1,77 @@
+.conta-bancaria {
+    display: flex;
+    flex-direction: column;
+    width: calc(100vw);
+    height: calc(100vh - 65px);
+    background: var(--background-primary);
+  }
+  .conta-bancaria > .top {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    justify-content: space-between;
+  }
+  .conta-bancaria > .top > .left {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .conta-bancaria > .top > .left > .icon {
+    font-size: 1.5rem;
+    color: #000000a5;
+  }
+  .conta-bancaria > .top > .left > span {
+    font-size: 1.4rem;
+    color: #000000c6;
+    font-weight: 600;
+  }
+  .conta-bancaria > .top > .right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .conta-bancaria > .top > .right > .button {
+    color: #fff;
+    padding: 10px 20px;
+    background: #272727;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+    font-size: 1.3rem;
+  }
+  .conta-bancaria > .top > .right > .button.green {
+    background: var(--primary);
+  }
+  .conta-bancaria > .top > .right > .button.blue {
+    background: var(--green);
+  }
+  .conta-bancaria > .top > .right > .button:hover {
+    opacity: 0.9;
+  }
+  .conta-bancaria .edit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 50px;
+    color: var(--insetShadow);
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+  }
+  .conta-bancaria .edit-button:hover {
+    background: var(--insetShadow);
+    color: #fff
+  }
+  .conta-bancaria .banco-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .conta-bancaria .banco-row img {
+    object-fit: cover;
+    height: 20px;
+  }

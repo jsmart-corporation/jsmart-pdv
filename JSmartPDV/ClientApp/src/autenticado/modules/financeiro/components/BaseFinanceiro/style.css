@@ -23,6 +23,9 @@
   gap: 10px;
   margin-left: 10px;
 }
+.base-financeiro > .top > .left >  h3{
+  color: #fff;
+}
 .base-financeiro > .top > .right{
   margin-right: 10px;
   gap: 10px;

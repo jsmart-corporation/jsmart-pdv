@@ -1,0 +1,152 @@
+.nova-produto{
+    display: flex;
+    flex-direction: column;
+}
+.nova-produto > .header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--green);
+    height: 60px;
+    padding: 0 20px;
+    box-shadow: 0 0 0.4rem #000;
+}
+.nova-produto > .header > span{
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.nova-produto > .header > .button-close{
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nova-produto > .header > .button-close:hover{
+    background: #0000001e;
+}
+.nova-produto > .middle{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 15px;
+    gap: 10px;
+}
+.nova-produto > .middle > .bottom{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.nova-produto > .bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    background: var(--green);
+    height: 50px;
+    box-shadow: 0 0 0.4rem #0000006c;
+}
+.nova-produto > .bottom > .button-salvar{
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.nova-produto > .bottom > .button-remove{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+}
+.nova-produto > .bottom > .button-remove:hover,
+.nova-produto > .bottom > .button-salvar:hover{
+    background: #0000001e;
+}
+.nova-produto > .bottom > .button-salvar.disabled{
+    pointer-events: none;
+    color: #b3b3b3;
+}
+.nova-produto  .tab{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.nova-produto  .tab > .item-group{
+    display: flex;
+    gap: 10px;
+}
+.nova-produto .insumo-tab{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.nova-produto .insumo-tab > .info{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: #e7b62d71;
+    outline: 1px solid #e7b52d;
+    border-radius: 5px;
+    padding: 10px;
+    color: var(--text);
+}
+.nova-produto  .outros{
+    display: flex;
+    gap: 10px;
+}
+.nova-produto  .outros > .left{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.nova-produto .outros > .right{
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.nova-produto  .outros > .right > .image-content{
+    width: 150px;
+    height: 150px;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 5px #00000036;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-style: dashed;
+}
+.nova-produto  .outros > .right > .image-content > img{
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 5px;
+}
+.nova-produto .outros > .right > .button{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    padding: 5px 0;
+    background: #1976d2;
+    color: #fff;
+    gap: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.nova-produto .outros > .right > .button.remove{
+    background: rgb(184, 46, 46);
+}
+.nova-produto  .outros > .left > .row{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}

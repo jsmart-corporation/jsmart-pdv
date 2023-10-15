@@ -1,0 +1,208 @@
+.transacao{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 10px 10px 10px 0;
+    gap: 10px;
+
+}
+.transacao > .top{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    border-radius: 5px;
+    box-shadow: 0 0 0.5rem #00000042;
+    padding: 10px;
+    gap: 10px;
+
+
+}
+.transacao > .top > .itens-transacao{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: auto;
+}
+.transacao > .top > .itens-transacao > .itens{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.transacao > .top > .cliente {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.transacao > .top > .cliente > .deletar-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    border-radius: 5px;
+    border: 1px solid #00000054;
+    width: 55px;
+    min-width: 55px;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+}
+.transacao > .top > .cliente > .deletar-button.disabled{
+    background: #9e9e9e;
+}
+.transacao > .top > .cliente > .deletar-button > .icon{
+    font-size: 1.4rem;
+    color: #ff5353ad;
+}
+.transacao > .top > .cliente > .deletar-button.delete{
+    border: 1px solid #ff5353ad;
+    background: #ff5353ad;
+    color: #fff;
+}
+.transacao > .top > .cliente > .deletar-button.delete > .icon{
+    color: #fff;
+}
+.transacao > .top > .cliente > .cliente-content{
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #00000054;
+    border-radius: 5px;
+    padding: 0 10px;
+    height: 100%;
+    
+}
+.transacao > .top > .cliente > .cliente-content > .left{
+    display: flex;
+    flex-direction: column;
+}
+.transacao > .top > .cliente > .cliente-content > .left{
+    font-size: 1.2rem;
+    line-height: 1.2
+}
+.transacao > .top > .cliente > .cliente-content > .left  .cpf,
+.transacao > .top > .cliente > .cliente-content > .left  .nome{
+    font-weight: 600;
+    
+}
+.transacao > .top > .cliente > .cliente-content > .right{
+    display: flex;
+    gap: 5px;
+}
+.transacao > .top > .cliente > .cliente-content > .right > .button-remover{
+    cursor: pointer;
+    color: #ff5353ad;
+    font-weight: 600;
+}
+.transacao > .bottom{
+    display: flex;
+    height: 90px;
+    background: var(--green);
+    border-radius: 5px;
+    box-shadow: 0 0 0.5rem #00000042;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+   
+}
+.transacao > .bottom > .enviado{
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+}
+.transacao > .bottom > .enviar{
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: space-between;
+}
+.transacao > .bottom > .enviado > span{
+    font-size: 2.5rem;
+    color: #fff;
+    font-weight: 600;
+}
+.transacao > .bottom.disabled{
+    opacity: 0.5;
+    pointer-events: none;
+}
+.transacao > .bottom.bottom.disabled > .enviar > .icon{
+    color: transparent;
+}
+.transacao > .bottom > .enviar > .icon{
+    font-size: 4.5rem;
+    color: #fff;
+}
+.transacao > .bottom > .enviar > .total{
+    font-size: 3.1rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+/* ITEMTRANSACAO */
+
+.item-transacao{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background: var(--background-secondary);
+    border-radius: 5px;
+    gap: 10px;
+    pointer-events: none;
+    /* cursor: pointer; */
+}
+.item-transacao:hover{
+    background: #dfdfdf;
+}
+.item-transacao > .left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+}
+.item-transacao.delete{
+    cursor: pointer;
+    pointer-events: all;
+}
+.item-transacao.delete > .left > .quantidade{
+    background: #ff5353ad;
+}
+.item-transacao > .left > .quantidade{
+    background: #9e9e9e ;
+    height: 50px;
+    min-width: 50px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: 0.1s ease-in-out;
+}
+.item-transacao.delete > .left > .quantidade > .icon{
+    font-size: 1.2rem;
+}
+.item-transacao > .left > .informacao{
+    display: flex;
+    flex-direction: column;
+}
+.item-transacao > .left > .informacao > .nome {
+    font-size: 1.3rem;
+    color: var(--text);
+}
+.item-transacao > .left > .informacao > .unitario{
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--green);
+}
+.item-transacao > .right{
+    display: flex;
+    align-items: center;
+}
+.item-transacao > .right .valortotal{
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text);
+}

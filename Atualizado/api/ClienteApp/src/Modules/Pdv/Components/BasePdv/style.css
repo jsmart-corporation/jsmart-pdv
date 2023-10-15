@@ -1,0 +1,66 @@
+.base-pdv{
+    width: 100vw;
+    height: 100vh;
+    background: var(--background-secondary);
+    color: var(--text);
+  }
+  
+  .base-pdv > .top{
+    position: sticky;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    top: 0;
+    width: 100vw;
+    height: 65px;
+    background: var(--green);
+    box-shadow: 0 0 0.5rem #000000ad;
+    z-index: 10;
+  }
+  .base-pdv > .top > .left{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 10px;
+  }
+  .base-pdv > .top > .left >  h3{
+    color: #fff;
+  }
+  .base-pdv > .top > .right{
+    margin-right: 10px;
+    gap: 10px;
+    display: flex;
+    align-items: center;
+  }
+  .base-pdv > .top > .right > .sessao-button{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 40px;
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 1px solid #FFF;
+    color: #fff;
+    cursor: pointer;
+  }
+  .base-pdv > .top > .left > .menu-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+    color: #fff;
+  }
+  .base-pdv > .top > .left > .menu-button:hover {
+    background: rgba(0, 0, 0, 0.12);
+  }
+  
+  .base-pdv > .pages{
+    position: relative;
+    width: 100vw;
+    height: calc(100vh - 65px);
+    z-index: 2;
+  }

@@ -43,3 +43,25 @@
     box-shadow: 0 0 0.1rem #00000063;
 
 }
+.tabs-navigator{
+    display: flex;
+    flex-direction: column;
+}
+.tabs-navigator > .placeholder{
+    position: sticky;
+    top: 0;
+    padding: 10px;
+    background: var(--green);
+    color: #fff;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 0 0 0.8rem #00000063;
+    z-index: 5;
+
+}
+.tabs-navigator > .childrens{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}

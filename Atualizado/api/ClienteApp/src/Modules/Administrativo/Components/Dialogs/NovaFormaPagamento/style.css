@@ -1,0 +1,75 @@
+.nova-forma-pagamento{
+    display: flex;
+    flex-direction: column;
+    
+}
+.nova-forma-pagamento > .header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--green);
+    height: 60px;
+    padding: 0 20px;
+    box-shadow: 0 0 0.4rem #000;
+}
+.nova-forma-pagamento > .header > span{
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.nova-forma-pagamento > .header > .button-close{
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nova-forma-pagamento > .header > .button-close:hover{
+    background: #0000001e;
+}
+.nova-forma-pagamento > .middle{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 15px;
+    gap: 10px;
+}
+.nova-forma-pagamento > .middle > .bottom{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.nova-forma-pagamento > .bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    background: var(--green);
+    height: 50px;
+    box-shadow: 0 0 0.4rem #0000006c;
+}
+.nova-forma-pagamento > .bottom > .button-salvar{
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.nova-forma-pagamento > .bottom > .button-remove{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+}
+.nova-forma-pagamento > .bottom > .button-remove:hover,
+.nova-forma-pagamento > .bottom > .button-salvar:hover{
+    background: #0000001e;
+}
+.nova-forma-pagamento > .bottom > .button-salvar.disabled{
+    pointer-events: none;
+    color: #b3b3b3;
+}
