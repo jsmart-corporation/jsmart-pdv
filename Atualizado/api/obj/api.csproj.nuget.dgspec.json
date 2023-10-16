@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Pedroca\\Desktop\\JWT-Net6-EXAMPLE-main\\JWT-Net6-EXAMPLE-main\\api\\api.csproj": {}
+    "C:\\Users\\Pedroca\\Documents\\GitHub\\jsmart-pdv\\Atualizado\\api\\api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Pedroca\\Desktop\\JWT-Net6-EXAMPLE-main\\JWT-Net6-EXAMPLE-main\\api\\api.csproj": {
+    "C:\\Users\\Pedroca\\Documents\\GitHub\\jsmart-pdv\\Atualizado\\api\\api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Pedroca\\Desktop\\JWT-Net6-EXAMPLE-main\\JWT-Net6-EXAMPLE-main\\api\\api.csproj",
+        "projectUniqueName": "C:\\Users\\Pedroca\\Documents\\GitHub\\jsmart-pdv\\Atualizado\\api\\api.csproj",
         "projectName": "api",
-        "projectPath": "C:\\Users\\Pedroca\\Desktop\\JWT-Net6-EXAMPLE-main\\JWT-Net6-EXAMPLE-main\\api\\api.csproj",
+        "projectPath": "C:\\Users\\Pedroca\\Documents\\GitHub\\jsmart-pdv\\Atualizado\\api\\api.csproj",
         "packagesPath": "C:\\Users\\Pedroca\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Pedroca\\Desktop\\JWT-Net6-EXAMPLE-main\\JWT-Net6-EXAMPLE-main\\api\\obj\\",
+        "outputPath": "C:\\Users\\Pedroca\\Documents\\GitHub\\jsmart-pdv\\Atualizado\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Pedroca\\AppData\\Roaming\\NuGet\\NuGet.Config",

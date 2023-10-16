@@ -55,7 +55,7 @@ export default function FinVendas() {
       flex: 1,
       hideable: false,
       renderCell(params) {
-        return params.value ? params.value.nome : "Sem Cliente";
+        return <span className={"pago " + (params.value ? "transparente" : "") } >{params.value ? params.value.nome : "Sem Cliente" }</span>;
       },
     },
     {
@@ -97,7 +97,7 @@ export default function FinVendas() {
   ];
  
   return (
-    <div className="categoria">
+    <div className="vendas">
     <div className="top">
         <div className="left">
           <CiBank className="icon" />

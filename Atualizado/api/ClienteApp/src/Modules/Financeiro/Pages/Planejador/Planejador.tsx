@@ -16,7 +16,7 @@ export default function Planejador() {
     {
       field: "descricao",
       headerName: "Descricao",
-      width: 140,
+      width: 400,
       hideable: false,
       renderCell(params) {
         return params.value;
@@ -34,7 +34,7 @@ export default function Planejador() {
     {
       field: "dataPagamentoEfetuado",
       headerName: "Vencimento/Pagamento",
-      width: 140,
+      width: 220,
       hideable: false,
       renderCell(params) {
         return moment(params.value).format('l');
@@ -52,7 +52,7 @@ export default function Planejador() {
     {
       field: "categoriaPagamento",
       headerName: "Categoria",
-      flex: 1,
+      width: 170,
       hideable: false,
       renderCell(params) {
         return categoriasPagamento.find(x => x.code === params.value)?.name;
@@ -61,28 +61,28 @@ export default function Planejador() {
     {
       field: "finMetodoPagamento",
       headerName: "Conta",
-      flex: 1,
+      width: 350,
       hideable: false,
       renderCell(params) {
-        return params.value ? params.value.contaBancaria.descricao : "Sem Conta";
+        return <span className={"pago " + (params.value.contaBancaria ? "transparente" : "") } >{params.value.contaBancaria ? params.value.contaBancaria.descricao : "Sem Conta"}</span>;
       },
     },
     {
       field: "cliente",
       headerName: "Cliente",
-      flex: 1,
+      width: 350,
       hideable: false,
       renderCell(params) {
-        return params.value ? params.value.nome : "Sem Cliente";
+        return <span className={"pago " + (params.value ? "transparente" : "") } >{params.value ? params.value.nome : "Sem Cliente" }</span>;
       },
     },
     {
       field: "pago",
       headerName: "Pago",
-      flex: 1,
+      width: 100,
       hideable: false,
       renderCell(params) {
-        return params.value ? "Sim" : "Não";
+        return <span className={"pago " + (params.value ? "sim" : "") } >{params.value ? "Sim" : "Não"}</span>;
       },
     },
     // {
@@ -106,7 +106,7 @@ export default function Planejador() {
   ];
  
   return (
-    <div className="categoria">
+    <div className="planejador">
     <div className="top">
         <div className="left">
           <CiBank className="icon" />

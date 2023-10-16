@@ -1,36 +1,36 @@
-.categoria {
+.vendas {
     display: flex;
     flex-direction: column;
     width: calc(100vw);
     height: calc(100vh - 65px);
     background: var(--background-primary);
   }
-  .categoria > .top {
+  .vendas > .top {
     display: flex;
     align-items: center;
     padding: 20px;
     justify-content: space-between;
   }
-  .categoria > .top > .left {
+  .vendas > .top > .left {
     display: flex;
     gap: 10px;
     align-items: center;
   }
-  .categoria > .top > .left > .icon {
+  .vendas > .top > .left > .icon {
     font-size: 1.5rem;
     color: #000000a5;
   }
-  .categoria > .top > .left > span {
+  .vendas > .top > .left > span {
     font-size: 1.4rem;
     color: #000000c6;
     font-weight: 600;
   }
-  .categoria > .top > .right {
+  .vendas > .top > .right {
     display: flex;
     align-items: center;
     gap: 10px;
   }
-  .categoria > .top > .right > .button {
+  .vendas > .top > .right > .button {
     color: #fff;
     padding: 10px 20px;
     background: #272727;
@@ -42,16 +42,16 @@
     transition: 0.1s ease-in-out;
     font-size: 1.3rem;
   }
-  .categoria > .top > .right > .button.green {
+  .vendas > .top > .right > .button.green {
     background: var(--primary);
   }
-  .categoria > .top > .right > .button.blue {
+  .vendas > .top > .right > .button.blue {
     background: var(--green);
   }
-  .categoria > .top > .right > .button:hover {
+  .vendas > .top > .right > .button:hover {
     opacity: 0.9;
   }
-  .categoria .edit-button {
+  .vendas .edit-button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -62,16 +62,32 @@
     cursor: pointer;
     transition: 0.1s ease-in-out;
   }
-  .categoria .edit-button:hover {
+  .vendas .edit-button:hover {
     background: var(--insetShadow);
     color: #fff
   }
-  .categoria .banco-row {
+  .vendas .banco-row {
     display: flex;
     align-items: center;
     gap: 5px;
   }
-  .categoria .banco-row img {
+  .vendas .banco-row img {
     object-fit: cover;
     height: 20px;
+  }
+
+  .vendas .pago{
+    padding: 5px 10px;
+    background: rgb(247, 107, 107);
+    border-radius: 5px;
+    font-weight: 500;
+    color: #fff;
+  }
+  .vendas .pago.sim{
+    background: rgb(20, 189, 124);
+  }
+  .vendas .pago.transparente{
+    background: rgba(112, 247, 107, 0);
+    color: var(--text);
+    padding: 0;
   }

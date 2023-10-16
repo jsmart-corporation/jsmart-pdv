@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yhFCDuJTlLH2uVyoetgUuos6kCyeMRu+LDXjJnywqazXGb5b7KLnZHss/gjpmAaHWLduA+UNUYGMLSKheexOpA==",
+  "dgSpecHash": "pSe2pViWgdHmJkAIjD26zhIkWPT4ESbu09fpUNvYdxS1j3K32+P6K1u1UNfruXNc6YEwOxSy2GyilOi5+XO8Ew==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Pedroca\\Desktop\\JWT-Net6-EXAMPLE-main\\JWT-Net6-EXAMPLE-main\\api\\api.csproj",
+  "projectFilePath": "C:\\Users\\Pedroca\\Documents\\GitHub\\jsmart-pdv\\Atualizado\\api\\api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Pedroca\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Pedroca\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
