@@ -25,6 +25,8 @@ export default function CaixaProvider({children} : IPropsData) {
         }
     },[isCaixaLoading])
 
+   
+
   return (
     <CaixaContext.Provider value={{caixa,mutateCaixa}}>
         {children}

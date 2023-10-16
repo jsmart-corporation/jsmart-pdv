@@ -13,15 +13,15 @@ function createWindow() {
 
     backgroundColor: "#000000",
     show: false,
-    webPreferences: {
-      nodeIntegration: true,
-      enableRemoteModule: true,
-      contextIsolation: false,
-      webviewTag: true,
-      nodeIntegrationInWorker: true,
-      allowRunningInsecureContent: true,
-      webSecurity: false,
-    },
+    // webPreferences: {
+    //   nodeIntegration: true,
+    //   enableRemoteModule: true,
+    //   contextIsolation: false,
+    //   webviewTag: true,
+    //   nodeIntegrationInWorker: true,
+    //   allowRunningInsecureContent: true,
+    //   webSecurity: false,
+    // },
   });
   // const iconPath = path.join('', 'nome_do_arquivo_do_ícone.ico');
   // mainWindow.setIcon(iconPath);
@@ -35,7 +35,7 @@ function createWindow() {
   globalShortcut.register('Ctrl+=', () => {
     mainWindow.webContents.setZoomLevel(mainWindow.webContents.getZoomLevel() + 1);
   });
-  mainWindow.setMenu(null); // Desabilita o menu da janela principal
+  // mainWindow.setMenu(null); // Desabilita o menu da janela principal
 
   mainWindow.once("ready-to-show", () => {
     mainWindow.maximize();

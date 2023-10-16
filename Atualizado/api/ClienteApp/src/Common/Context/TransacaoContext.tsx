@@ -148,7 +148,8 @@ export function TransacaoProvider({children} : TransacaoProviderProps) {
         transacaoPagamentoDTO.Nsu = element.Nsu,
         transacaoPagamentoDTO.Valor = element.Valor,
         transacaoPagamentoDTO.FinMetodoPagamentoId = element.FinMetodoPagamentoId
-        transacaoPagamentoDTO.ClienteId = transacao.Cliente?.id?? null;
+        transacaoPagamentoDTO.ClienteId = transacao.Cliente?.id?? null,
+        transacaoPagamentoDTO.PorcentagemPagamento = element.Porcentagem,
         transacaoDTO.TransacaoPagamentos.push(transacaoPagamentoDTO)
       });
       let valorTotalPago = 0;

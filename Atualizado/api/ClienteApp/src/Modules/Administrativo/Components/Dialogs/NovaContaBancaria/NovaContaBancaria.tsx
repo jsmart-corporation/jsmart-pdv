@@ -129,21 +129,21 @@ export default function NovaContaBancaria({aberto,contaBancariaEditar,onClose,on
           </div>
           <div className="middle">
             <div className="top">
-            <JSSelect fullWidth>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={banco}
-                placeholder="Estacao"
-                
-                onChange={(x) => setBanco(parseInt(x.target.value as string)?? 0)}
-              >
-                <MenuItem disabled value={0} style={{display: 'none'}}>
-                  <em>Selecione o Banco</em>
-                </MenuItem>
-                {bancos.map(x => <MenuItem key={x.code} value={x.code}>{x.name}</MenuItem>)}
-              </Select>
-            </JSSelect>
+              <JSSelect fullWidth>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={banco}
+                  placeholder="Estacao"
+                  
+                  onChange={(x) => setBanco(parseInt(x.target.value as string)?? 0)}
+                >
+                  <MenuItem disabled value={0} style={{display: 'none'}}>
+                    <em>Selecione o Banco</em>
+                  </MenuItem>
+                  {bancos.map(x => <MenuItem key={x.code} value={x.code}>{x.name}</MenuItem>)}
+                </Select>
+              </JSSelect>
             </div>
             <div className="bottom">
               <JSTextField value={descricao} onChange={(x) => setDescricao(x.target.value)} label="Descricao"  disabled={contaBancariaEditar?.permanente} fullWidth/>

@@ -13,7 +13,7 @@ namespace JSmartPDV.DB.DTO.Transacao
         public decimal SubTotal { get; set; }
         public decimal Desconto { get; set; }
         public DateTime DataVenda { get; set; } = DateTime.Now;
-        public List<TransacaoItemDTO>? TransacaoItems { get; set; }
-        public List<TransacaoPagamentoDTO>? TransacaoPagamentos { get; set; }
+        public List<TransacaoItemDTO> TransacaoItems { get; set; } = new List<TransacaoItemDTO>();
+        public List<TransacaoPagamentoDTO> TransacaoPagamentos { get; set; } = new List<TransacaoPagamentoDTO>();
     }
 }

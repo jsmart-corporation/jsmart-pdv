@@ -388,7 +388,7 @@ export default function NovoProduto({aberto,produtoEditar,onClose,onPost,onEdit,
               <Tab label="INSUMOS" value="4" />
               <Tab label="OUTROS" value="5" />
             </TabList>
-            <TabPanel value="1">
+            <TabPanel value="1" sx={{padding: "15px"}}>
               <div className="tab">
                 <div className="item-group">
                   <JSTextField value={ncm} onChange={(x: any) => setNcm(removerLetrasEPontos(x.target.value))} fullWidth label="NCM"/>
@@ -400,7 +400,7 @@ export default function NovoProduto({aberto,produtoEditar,onClose,onPost,onEdit,
                 </div>
               </div>
               </TabPanel>
-            <TabPanel value="2">
+            <TabPanel value="2"  sx={{padding: "15px"}}>
               <div className="tab">
                 <div className="item-group">
                   <JSSelect fullWidth>
@@ -455,7 +455,8 @@ export default function NovoProduto({aberto,produtoEditar,onClose,onPost,onEdit,
                 </div>
               </div>
               </TabPanel>
-            <TabPanel value="3"><div className="tab"> 
+            <TabPanel value="3"  sx={{padding: "15px"}}>
+              <div className="tab"> 
                 <div className="item-group">
                   <JSSelect fullWidth>
                     <InputLabel id="conta-destino">Situação Tributária PIS</InputLabel>
@@ -491,7 +492,7 @@ export default function NovoProduto({aberto,produtoEditar,onClose,onPost,onEdit,
                   <JSTextField value={maskPercent(aliqCofins)} onChange={(x: any) => setAliqCofins(FormatarPorcentagem(x.target.value))} fullWidth sx={{maxWidth: 300}} label="Aliq. COFINS (%)"/>
                 </div>
               </div></TabPanel>
-              <TabPanel value='4'>
+              <TabPanel value='4'  sx={{padding: "15px"}}>
                   <div className="insumo-tab">
                     <div className="info">
                       <AiFillInfoCircle className="icon"/>
@@ -500,7 +501,7 @@ export default function NovoProduto({aberto,produtoEditar,onClose,onPost,onEdit,
                     <JSTextChips value={insumos} onChange={(x) => setInsumos(x)} label="Insumos" fullWidth placeholder='Escreva e pressione ENTER'/>
                   </div>
               </TabPanel>
-              <TabPanel value='5'>
+              <TabPanel value='5'  sx={{padding: "15px"}}>
                   <div className="outros">
                     <div className="left">
                         <div className="row">
@@ -560,7 +561,7 @@ export default function NovoProduto({aberto,produtoEditar,onClose,onPost,onEdit,
                           </JSSelect>
                         </div>
                         <div className="row">
-                          <JSTextField value={codigoBalanca} onChange={(x: any) => setCodigoBalanca(FormatarInteiro(x.target.value))} fullWidth sx={{maxWidth: 300}} label="Código na Balança"/>
+                          <JSTextField value={codigoBalanca} onChange={(x: any) => setCodigoBalanca(FormatarInteiro(x.target.value))} fullWidth sx={{maxWidth: 200}} label="Código na Balança"/>
                           <FormControlLabel checked={agrupavel}  control={<Checkbox  onChange={(x: React.ChangeEvent<HTMLInputElement>) => setAgrupavel(x.target.checked)} />} label="Item Agrupavel" />
                           <FormControlLabel checked={recomendado}  control={<Checkbox  onChange={(x: React.ChangeEvent<HTMLInputElement>) => setRecomendado(x.target.checked)} />} label="Recomendado" />
                         </div>

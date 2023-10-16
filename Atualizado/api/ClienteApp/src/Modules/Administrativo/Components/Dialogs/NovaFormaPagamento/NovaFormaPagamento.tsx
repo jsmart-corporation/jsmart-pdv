@@ -235,7 +235,7 @@ export default function NovaFormaPagamento({aberto,formaPagamentoEditar,onClose,
               <JSTextField sx={{width: 350}} value={maskPercent(taxa)} onChange={(x) => setTaxa(FormatarPorcentagem(x.target.value))} label="Taxa" />
             </div>
             <div className="bottom">
-            <FormControlLabel checked={nsu}  control={<Checkbox  onChange={(x: React.ChangeEvent<HTMLInputElement>) => setNsu(x.target.checked)} />} label="Código de Autorização (NSU)" />
+            <FormControlLabel disabled={formaPagamentoEditar?.permantente} checked={nsu}  control={<Checkbox  onChange={(x: React.ChangeEvent<HTMLInputElement>) => setNsu(x.target.checked)} />} label="Código de Autorização (NSU)" />
             <FormControlLabel checked={troco} control={<Checkbox  onChange={(x: React.ChangeEvent<HTMLInputElement>) => setTroco(x.target.checked)} />} label="Aceitar Troco" />
             </div>
           </div>

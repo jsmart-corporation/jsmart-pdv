@@ -29,12 +29,14 @@
 .nova-conta-bancaria > .header > .button-close:hover{
     background: #0000001e;
 }
-.nova-conta-bancaria > .middle{
+.nova-conta-bancaria  .middle{
+    margin: 10px 0;
+
     display: flex;
     flex-direction: column;
     flex: 1;
     padding: 15px;
-    gap: 10px;
+    gap: 23px;
 }
 .nova-conta-bancaria > .middle > .bottom{
     display: flex;

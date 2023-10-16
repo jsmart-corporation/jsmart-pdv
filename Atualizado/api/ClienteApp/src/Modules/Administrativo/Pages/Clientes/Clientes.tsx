@@ -110,7 +110,10 @@ export default function Clientes() {
         <div className="left">
           <HiUsers className="icon" />
           <span>Clientes</span>
-          <JSTextField 
+          
+        </div>
+        <div className="right">
+        <JSTextField 
             size='small'
             placeholder='Buscar Clientes'
             InputProps={{
@@ -122,8 +125,6 @@ export default function Clientes() {
              
             }}
           />
-        </div>
-        <div className="right">
           <div
             className="button blue p-ripple"
             onClick={() => setNovoCliente(true)}

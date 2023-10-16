@@ -5,11 +5,13 @@ import { CiBank } from "react-icons/ci";
 import { GridColDef } from '@mui/x-data-grid';
 import { AiFillEdit } from 'react-icons/ai';
 import { useState } from 'react';
-import { bancos } from '../../../../Common/Containts/ListasDrowDown';
+import SearchIcon from '@mui/icons-material/Search';
 import { Produto } from '../../../../Common/Interfaces';
 import { useProdutos } from '../../../../Common/Services/Swr/SwrServices';
 import NovoProduto from '../../Components/Dialogs/NovoProduto/NovoProduto';
 import { maskCurrency } from '../../../../Utils/Formatacoes';
+import { InputAdornment } from '@mui/material';
+import { JSTextField } from '../../../../JSCommon/Components/JSTextField';
 
 export default function Produtos() {
   const [novoProduto,setNovoProduto] = useState(false);
@@ -109,6 +111,18 @@ export default function Produtos() {
           <span>Produtos</span>
         </div>
         <div className="right">
+        <JSTextField 
+            size='small'
+            placeholder='Buscar Produtos'
+            InputProps={{
+              startAdornment: (
+                  <InputAdornment position="start">
+                      <SearchIcon />
+                  </InputAdornment>
+              ),
+             
+            }}
+          />
           <div
             className="button blue p-ripple"
             onClick={() => setNovoProduto(true)}

@@ -106,7 +106,7 @@ export default function NovaCategoria({aberto,categoriaEditar,onClose,onPost,onE
         PaperComponent={PaperComponent}
         aria-describedby="alert-dialog-slide-description"
       >
-        <div className="nova-conta-bancaria">
+        <div className="nova-categoria">
           <div className="header">
             <span>{categoriaEditar ? "Editar Categoria" : "Categorias"}</span>
             <div className="button-close" onClick={() => onClose()}>

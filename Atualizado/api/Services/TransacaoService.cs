@@ -8,12 +8,10 @@ namespace api.Services
     public class TransacaoService
     {
         private readonly AppDbContext _dbContext;
-
         public TransacaoService(AppDbContext dbContext)
         {
             _dbContext = dbContext;
         }
-
         public async Task<dynamic> PostTransacaoAsync(TransacaoDTO transacaoDTO,int userId)
         {
             var transacao = new Transacao()
@@ -34,9 +32,11 @@ namespace api.Services
             await PostTransacaoItemsAsync(transacaoDTO.TransacaoItems, transacao.Id);
             await PostTransacaoPagamentosAsync(transacaoDTO.TransacaoPagamentos, transacao.Id);
 
+          
+
             return null;
         }
-        public async Task<dynamic> PostTransacaoItemsAsync(List<TransacaoItemDTO>? transacaoItems, int TransacaoId)
+        public async Task<dynamic> PostTransacaoItemsAsync(List<TransacaoItemDTO> transacaoItems, int TransacaoId)
         {
             List<TransacaoItem> Items = new List<TransacaoItem>();
             foreach (var item in transacaoItems)
@@ -91,13 +91,14 @@ namespace api.Services
             await _dbContext.SaveChangesAsync();
             return Items;
         }
+
         public async Task<List<TransacaoResumoDTO>> GetTransacoesResumoAsync(int caixaId)
         {
             return await _dbContext.Transacoes.Where(x => x.CaixaId == caixaId).Include(x => x.Cliente).Include(x => x.TransacaoItems).Include(x => x.TransacaoPagamentos).OrderByDescending(x => x.Id).Take(20).Select(x => new TransacaoResumoDTO
             {
                 DataVenda = x.DataVenda,
                 Id = x.Id,
-                Nome = x.Cliente.Nome,
+                Nome = (x.Cliente != null ? x.Cliente.Nome : "Sem Cliente"),
                 Tipo = x.Tipo,
                 ValorTotal = x.ValorTotal,
                 NotaEmitida = x.NotaEmitida

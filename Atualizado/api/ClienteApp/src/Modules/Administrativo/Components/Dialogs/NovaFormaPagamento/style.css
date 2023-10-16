@@ -30,11 +30,13 @@
     background: #0000001e;
 }
 .nova-forma-pagamento > .middle{
+    margin: 10px 0;
+
     display: flex;
     flex-direction: column;
     flex: 1;
     padding: 15px;
-    gap: 10px;
+    gap: 23px;
 }
 .nova-forma-pagamento > .middle > .bottom{
     display: flex;

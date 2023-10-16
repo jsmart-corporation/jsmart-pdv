@@ -2,6 +2,7 @@ import { ReactNode, SetStateAction, createContext, useContext, useEffect, useSta
 import { LoadingDialogContext } from "../../JSCommon/Dialogs/LoadingDialog/LoadingDialogContext";
 import { User } from "../Interfaces";
 import { GetData } from "../Services/Axios/UserServices";
+import { useNavigate } from "react-router-dom";
 
 interface IPropsData{
     children: ReactNode
@@ -12,6 +13,7 @@ interface IContextData{
     setSidebar(value: SetStateAction<boolean>): void;
     user: User | null;
     Login(): void;
+    LogOut(): void;
 }
 
 export const GeralContext = createContext({} as IContextData)
@@ -21,7 +23,7 @@ export default function GeralProvider({children}: IPropsData) {
     const [sidebar,setSidebar] = useState<boolean>(false);
     const [user,setUser] = useState<User | null>(null);
     const {AbrirDialogoLoading,FechaDialogoLoading} = useContext(LoadingDialogContext)
-    
+    const Navigate = useNavigate();
     useEffect(() => {
         const getStorageToken = sessionStorage.getItem("acess_token");
         if(getStorageToken){
@@ -43,9 +45,14 @@ export default function GeralProvider({children}: IPropsData) {
     const GetDataAsync = async () => {
         return await GetData();
     }
-
+    const LogOut = () => {
+        sessionStorage.removeItem("acess_token");
+        setUser(null);
+        setAuthenticated(false)
+        Navigate('/')
+    }
   return (
-    <GeralContext.Provider value={{sidebar,user,authenticated,Login,setSidebar}}>
+    <GeralContext.Provider value={{sidebar,user,authenticated,Login,setSidebar,LogOut}}>
         {children}
     </GeralContext.Provider>
   )

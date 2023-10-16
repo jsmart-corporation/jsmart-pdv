@@ -1,9 +1,9 @@
-.nova-conta-bancaria{
+.nova-categoria{
     display: flex;
     flex-direction: column;
     width: 600px;
 }
-.nova-conta-bancaria > .header{
+.nova-categoria > .header{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -12,12 +12,12 @@
     padding: 0 20px;
     box-shadow: 0 0 0.4rem #000;
 }
-.nova-conta-bancaria > .header > span{
+.nova-categoria > .header > span{
     color: #fff;
     font-size: 1.2rem;
     font-weight: 500;
 }
-.nova-conta-bancaria > .header > .button-close{
+.nova-categoria > .header > .button-close{
     color: #fff;
     font-size: 1.5rem;
     padding: 5px;
@@ -26,22 +26,24 @@
     align-items: center;
     justify-content: center;
 }
-.nova-conta-bancaria > .header > .button-close:hover{
+.nova-categoria > .header > .button-close:hover{
     background: #0000001e;
 }
-.nova-conta-bancaria > .middle{
+.nova-categoria > .middle{
+    margin: 5px 0;
+
     display: flex;
     flex-direction: column;
     flex: 1;
     padding: 15px;
     gap: 10px;
 }
-.nova-conta-bancaria > .middle > .bottom{
+.nova-categoria > .middle > .bottom{
     display: flex;
     align-items: center;
     gap: 10px;
 }
-.nova-conta-bancaria > .bottom{
+.nova-categoria > .bottom{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -50,14 +52,14 @@
     height: 50px;
     box-shadow: 0 0 0.4rem #0000006c;
 }
-.nova-conta-bancaria > .bottom > .button-salvar{
+.nova-categoria > .bottom > .button-salvar{
     color: #fff;
     font-size: 1rem;
     font-weight: 500;
     padding: 5px 10px;
     cursor: pointer;
 }
-.nova-conta-bancaria > .bottom > .button-remove{
+.nova-categoria > .bottom > .button-remove{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -65,11 +67,11 @@
     padding: 10px;
     cursor: pointer;
 }
-.nova-conta-bancaria > .bottom > .button-remove:hover,
-.nova-conta-bancaria > .bottom > .button-salvar:hover{
+.nova-categoria > .bottom > .button-remove:hover,
+.nova-categoria > .bottom > .button-salvar:hover{
     background: #0000001e;
 }
-.nova-conta-bancaria > .bottom > .button-salvar.disabled{
+.nova-categoria > .bottom > .button-salvar.disabled{
     pointer-events: none;
     color: #b3b3b3;
 }

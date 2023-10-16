@@ -1,6 +1,8 @@
 .novo-cliente{
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+
 }
 .novo-cliente > .header{
     display: flex;
@@ -29,11 +31,12 @@
     background: #0000001e;
 }
 .novo-cliente > .middle{
+    margin: 10px 0;
     display: flex;
     flex-direction: column;
     flex: 1;
     padding: 15px;
-    gap: 10px;
+    gap: 23px;
 }
 .novo-cliente > .middle > .bottom{
     display: flex;

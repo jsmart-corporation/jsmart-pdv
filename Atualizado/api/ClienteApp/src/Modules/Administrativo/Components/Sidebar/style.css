@@ -40,14 +40,23 @@
 .sidebar-overlay-admin > .sidebar > .bottom {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 10px;
+    padding: 20px 10px 10px 10px;
     background: var(--green);
     color: #fff;
+    box-shadow: 0 0 0.8rem #00000046;
+    gap: 10px;
+
+}
+.sidebar-overlay-admin > .sidebar > .bottom img{
+    width: 50px;
+    height: 50px;
+    outline: 2px solid #ffffff85;
+    border-radius: 5px;
 }
 .sidebar-overlay-admin > .sidebar > .bottom > .left{
     display: flex;
     flex-direction: column;
+    flex: 1;
     gap: 2px;
 }
 .sidebar-overlay-admin > .sidebar > .bottom > .left > .nome{
@@ -57,4 +66,29 @@
 .sidebar-overlay-admin > .sidebar > .bottom > .left > .role{
     font-weight: 500;
     font-size: 0.9rem;
+}
+.sidebar-overlay-admin > .sidebar > .bottom > .exit{
+    display: flex;
+    align-items: center;
+}
+.sidebar-overlay-admin > .sidebar > .bottom > .exit > .exit-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.7rem;
+    cursor: pointer;
+}
+.sidebar-overlay-admin > .sidebar > .bottom > .exit > .exit-button:hover{
+    color: rgb(247, 107, 107);
+}
+.sidebar-overlay-admin > .sidebar > .version{
+    background: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    padding: 10px 10px;
 }

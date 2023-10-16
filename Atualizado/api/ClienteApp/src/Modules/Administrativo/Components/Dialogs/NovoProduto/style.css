@@ -29,11 +29,12 @@
     background: #0000001e;
 }
 .nova-produto > .middle{
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     flex: 1;
     padding: 15px;
-    gap: 10px;
+    gap: 23px;
 }
 .nova-produto > .middle > .bottom{
     display: flex;
@@ -75,7 +76,8 @@
 .nova-produto  .tab{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 23px;
+    margin-bottom: 5px;
 }
 .nova-produto  .tab > .item-group{
     display: flex;
@@ -104,17 +106,16 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 23px;
 }
 .nova-produto .outros > .right{
-    width: 150px;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 .nova-produto  .outros > .right > .image-content{
-    width: 150px;
-    height: 150px;
+    width: 240px;
+    height: 160px;
     border-radius: 5px;
     overflow: hidden;
     border: 5px #00000036;
@@ -124,8 +125,9 @@
     border-style: dashed;
 }
 .nova-produto  .outros > .right > .image-content > img{
-    width: 140px;
-    height: 140px;
+    width: 240px;
+    height: 160px;
+    object-fit: fill;
     object-fit: cover;
     overflow: hidden;
     border-radius: 5px;

@@ -6,6 +6,7 @@ import { categoriasPagamento } from '../../../../Common/Containts/ListasDrowDown
 import { useFinPlanejador } from '../../../../Common/Services/Swr/SwrServices';
 import { maskCurrency } from '../../../../Utils/Formatacoes';
 import moment from 'moment';
+import { FiPlus } from 'react-icons/fi';
 
 export default function Planejador() {
   
@@ -16,7 +17,7 @@ export default function Planejador() {
     {
       field: "descricao",
       headerName: "Descricao",
-      width: 400,
+      flex: 1,
       hideable: false,
       renderCell(params) {
         return params.value;
@@ -61,7 +62,7 @@ export default function Planejador() {
     {
       field: "finMetodoPagamento",
       headerName: "Conta",
-      width: 350,
+      flex: 1,
       hideable: false,
       renderCell(params) {
         return <span className={"pago " + (params.value.contaBancaria ? "transparente" : "") } >{params.value.contaBancaria ? params.value.contaBancaria.descricao : "Sem Conta"}</span>;
@@ -70,7 +71,7 @@ export default function Planejador() {
     {
       field: "cliente",
       headerName: "Cliente",
-      width: 350,
+      flex: 1,
       hideable: false,
       renderCell(params) {
         return <span className={"pago " + (params.value ? "transparente" : "") } >{params.value ? params.value.nome : "Sem Cliente" }</span>;
@@ -113,7 +114,12 @@ export default function Planejador() {
           <span>Planejador</span>
         </div>
         <div className="right">
-          
+        <div
+            className="button blue p-ripple"
+            onClick={() => null}
+          >
+            <FiPlus />
+          </div>
         </div>
       </div>
       <div

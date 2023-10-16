@@ -24,16 +24,16 @@
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    transition: 0.1s ease-in-out;
+}
+.nav-button:not(.active):hover::before{
+    height: 50%;
+    background: #f1c40f;
 }
 .nav-button.active::before{
     height: 50%;
     
 }
-.command-button:hover,
-.nav-button:hover{
-    transform: translateX(20px);
-}
+
 .nav-button > .icon,
 .command-button > .icon{
     font-size: 1.3rem;
