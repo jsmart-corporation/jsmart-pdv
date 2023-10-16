@@ -60,8 +60,8 @@ export default function FinVendas() {
     },
     {
       field: "dataVenda",
-      headerName: "Data Encerramento",
-      width: 170,
+      headerName: "Encerramento",
+      width: 130,
       hideable: false,
       renderCell(params) {
         return moment(params.value).format('l');

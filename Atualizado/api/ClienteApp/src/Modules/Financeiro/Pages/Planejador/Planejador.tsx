@@ -34,8 +34,8 @@ export default function Planejador() {
     },
     {
       field: "dataPagamentoEfetuado",
-      headerName: "Vencimento/Pagamento",
-      width: 220,
+      headerName: "Pagamento",
+      width: 150,
       hideable: false,
       renderCell(params) {
         return moment(params.value).format('l');
