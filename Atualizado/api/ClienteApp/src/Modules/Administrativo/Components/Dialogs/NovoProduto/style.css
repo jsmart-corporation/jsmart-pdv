@@ -86,7 +86,7 @@
 .nova-produto .insumo-tab{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
 }
 .nova-produto .insumo-tab > .info{
     display: flex;

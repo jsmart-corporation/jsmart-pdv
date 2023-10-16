@@ -1,6 +1,5 @@
 import './style.css'
-import {FaMoneyBillAlt, FaUsersCog} from 'react-icons/fa'
-import {LuComputer} from 'react-icons/lu'
+import {FaMoneyBillAlt} from 'react-icons/fa'
 import {BsBank2} from 'react-icons/bs'
 import {HiDesktopComputer,HiUsers} from 'react-icons/hi'
 import {BiBarcodeReader, BiHome, BiSolidPurchaseTag} from 'react-icons/bi'
@@ -27,8 +26,6 @@ interface IPage {
    
     
 export function NavigationMenu({fechaDrawer} : {fechaDrawer(): void}) {
-
-  
   const pages: ITab[] = [
     {
       key: 1,
@@ -70,7 +67,7 @@ export function NavigationMenu({fechaDrawer} : {fechaDrawer(): void}) {
           icon: BiBarcodeReader,
           function: () => fechaDrawer(),
           link: '/admin/produtos',
-          placeholder: "Cadastro de Produtos",
+          placeholder: "Produtos",
           isPage: true
         },
         {
@@ -78,15 +75,15 @@ export function NavigationMenu({fechaDrawer} : {fechaDrawer(): void}) {
           icon: HiUsers,
           function: () => fechaDrawer(),
           link: '/admin/clientes',
-          placeholder: "Cadastro de Clientes",
+          placeholder: " Clientes",
           isPage: true
         },
         // {
         //   key: 4,
         //   icon: FaUsersCog,
         //   function: () => fechaDrawer(),
-        //   link: '/administrativo/usuarios',
-        //   placeholder: "Cadastro de Usuarios",
+        //   link: '/admin/usuarios',
+        //   placeholder: "Usuarios",
         //   isPage: true
         // },
         {
@@ -110,7 +107,7 @@ export function NavigationMenu({fechaDrawer} : {fechaDrawer(): void}) {
           icon: BiSolidPurchaseTag,
           function: () => fechaDrawer(),
           link: '/admin/categorias',
-          placeholder: "Cadastro de Categorias",
+          placeholder: "Categorias",
           isPage: true
         },
         // {
@@ -137,9 +134,6 @@ export function NavigationMenu({fechaDrawer} : {fechaDrawer(): void}) {
       </div>
     </div>
   ));
-    
-    
-  
 }
 
 function NavButton({page}: {page: IPage}) {
@@ -151,6 +145,7 @@ function NavButton({page}: {page: IPage}) {
     </NavLink>
   )
 }
+
 function CommandButton({page} : {page: IPage}){
   return(
     <div className={`command-button p-ripple` + (page.disabled ? 'disabled' : '')} onClick={() => page.function!()} >

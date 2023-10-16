@@ -70,13 +70,13 @@ export default function FormasPagamento() {
       hideable: false,
       renderCell(params) {
         return (
-          <div
-            className="edit-button p-ripple"
-            onClick={() => {setFormaPagamentoEditar(params.row); setNovaFormaPagamento(true)}}
-            data-pr-tooltip="Editar"
-          >
-            <AiFillEdit />
-          </div>
+          params.row.permantente !== true && <div
+          className="edit-button p-ripple"
+          onClick={() => {setFormaPagamentoEditar(params.row); setNovaFormaPagamento(true)}}
+          data-pr-tooltip="Editar"
+        >
+          <AiFillEdit />
+        </div>
         );
       },
     },

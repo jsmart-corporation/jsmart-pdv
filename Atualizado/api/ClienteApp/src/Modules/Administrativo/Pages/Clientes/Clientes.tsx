@@ -44,7 +44,7 @@ export default function Clientes() {
       flex: 1,
       hideable: false,
       renderCell(params) {
-        return params.row.pessoa === 1 ? params.value : params.row.cnpj;
+        return params.row.pessoa === 1 ? "CPF: " + params.value : "CNPJ: " + params.row.cnpj;
       },
     },
     {

@@ -45,7 +45,7 @@ export function NavigationMenu({fechaDrawer} : {fechaDrawer(): void}) {
           key: 2,
           icon: TbDeviceDesktopAnalytics,
           function: () => null,
-          link: '/pdv/financeiro',
+          link: '/pdv/os',
           placeholder: "Ordem de Serviço",
           isPage: true
         },

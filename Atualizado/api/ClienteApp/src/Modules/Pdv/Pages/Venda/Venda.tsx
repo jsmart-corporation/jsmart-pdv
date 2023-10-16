@@ -1,5 +1,5 @@
 
-import { useContext, useEffect } from 'react'
+import { useContext} from 'react'
 
 import './style.css'
 import { Splitter, SplitterPanel, SplitterResizeEndEvent } from 'primereact/splitter'
@@ -11,9 +11,7 @@ import Transacao from './Transacao/Transacao'
 export default function Venda() {
     const {caixa} = useContext(CaixaContext)
     const {AbreDialogoAbrirCaixa} = useContext(ComponentServices.AbrirCaixaDialogoContext)
-    useEffect(() => {
-        document.title = "JSmart - Venda"
-    },[])
+   
     
 
  

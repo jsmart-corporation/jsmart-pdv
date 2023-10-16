@@ -60,7 +60,7 @@ export default function ContasBancarias() {
       hideable: false,
       renderCell(params) {
         return (
-          <div
+          params.row.permanente !== true && <div
             className="edit-button p-ripple"
             onClick={() => {setContaBancariaEditar(params.row); setNovaContaBancaria(true)}}
             data-pr-tooltip="Editar"

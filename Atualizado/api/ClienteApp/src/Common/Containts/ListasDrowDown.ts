@@ -359,11 +359,11 @@ export const uf: UF[] = [
 ];
 export const pessoa: Pessoa[] = [
   {
-    code: 0,
+    code: 1,
     name: "Fisica",
   },
   {
-    code: 1,
+    code: 2,
     name: "Juridica",
   },
 ];
