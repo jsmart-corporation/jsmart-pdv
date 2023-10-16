@@ -45,7 +45,7 @@ export default function FormasPagamento() {
     {
       field: "conta",
       headerName: "Conta de Destino",
-      width: 130,
+      width: 150,
       hideable: false,
       renderCell(params) {
         return params.row.contaBancaria?.descricao ? params.row.contaBancaria.descricao : "Nenhuma";
@@ -54,12 +54,12 @@ export default function FormasPagamento() {
     {
       field: "diasFaturamento",
       headerName: "Dias para Faturamento",
-      width: 170,
+      width: 200,
       hideable: false,
     },
     {
       field: "taxa",
-      headerName: "Taxa",
+      headerName: "Taxa (%)",
       width: 100,
       hideable: false,
     },
