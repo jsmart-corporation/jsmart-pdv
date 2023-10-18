@@ -77,6 +77,7 @@ namespace api.Context
                 DiasFaturamento = 0,
                 Taxa = 0,
                 Permantente = true,
+                BaixaAutomatica = true,
                 Descricao = "Dinheiro"
             });
         }
