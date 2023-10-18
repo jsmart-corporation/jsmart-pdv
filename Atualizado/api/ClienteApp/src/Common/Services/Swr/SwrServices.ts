@@ -74,8 +74,8 @@ export const useFinTransacoes = () => {
     
     return {transacoes,mutate,isLoading}
 }
-export const useFinPlanejador = () => {
-    const {data:pagamentos,mutate,isLoading} = useSWR<TransacaoPagamentoFinanceiro[]>(`api/transacoesPagamento/all`, async url => {
+export const useFinPlanejador = (inicio?: string,final?: string) => {
+    const {data:pagamentos,mutate,isLoading} = useSWR<TransacaoPagamentoFinanceiro[]>((inicio !== null && final !== null) ? `api/transacoesPagamento/all?inicial=${inicio}&final=${final}` : null, async url => {
         const response = await api.get(url);
         return response.data;
     },{refreshWhenOffline: true,revalidateOnReconnect: true})

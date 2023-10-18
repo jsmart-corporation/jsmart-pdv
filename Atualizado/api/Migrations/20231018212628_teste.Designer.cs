@@ -11,8 +11,8 @@ using api.Context;
 namespace api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231018131230_update-parcelas")]
-    partial class updateparcelas
+    [Migration("20231018212628_teste")]
+    partial class teste
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -77,6 +77,246 @@ namespace api.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categorias");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4854),
+                            Deletado = false,
+                            Descricao = "Viagem"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4856),
+                            Deletado = false,
+                            Descricao = "Eletrônicos"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4858),
+                            Deletado = false,
+                            Descricao = "Higiene"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4859),
+                            Deletado = false,
+                            Descricao = "Escritório"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4860),
+                            Deletado = false,
+                            Descricao = "Regionais"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4862),
+                            Deletado = false,
+                            Descricao = "Suplementos"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4863),
+                            Deletado = false,
+                            Descricao = "Entretenimento"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4864),
+                            Deletado = false,
+                            Descricao = "Jardinagem"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4865),
+                            Deletado = false,
+                            Descricao = "Exercício"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4867),
+                            Deletado = false,
+                            Descricao = "Segurança"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4868),
+                            Deletado = false,
+                            Descricao = "Musical"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4869),
+                            Deletado = false,
+                            Descricao = "Arte"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4870),
+                            Deletado = false,
+                            Descricao = "Cozinha"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4872),
+                            Deletado = false,
+                            Descricao = "Fotografia"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4873),
+                            Deletado = false,
+                            Descricao = "Reciclagem"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4874),
+                            Deletado = false,
+                            Descricao = "Moda"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4875),
+                            Deletado = false,
+                            Descricao = "Beleza"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4876),
+                            Deletado = false,
+                            Descricao = "Alimentos"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4877),
+                            Deletado = false,
+                            Descricao = "Casa"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4879),
+                            Deletado = false,
+                            Descricao = "Esportes"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4880),
+                            Deletado = false,
+                            Descricao = "Brinquedos"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4881),
+                            Deletado = false,
+                            Descricao = "Livros"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4883),
+                            Deletado = false,
+                            Descricao = "Ferramentas"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4884),
+                            Deletado = false,
+                            Descricao = "Saúde"
+                        },
+                        new
+                        {
+                            Id = 29,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4885),
+                            Deletado = false,
+                            Descricao = "Joias"
+                        },
+                        new
+                        {
+                            Id = 30,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4886),
+                            Deletado = false,
+                            Descricao = "Animais"
+                        },
+                        new
+                        {
+                            Id = 31,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4888),
+                            Deletado = false,
+                            Descricao = "Limpeza"
+                        },
+                        new
+                        {
+                            Id = 32,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4889),
+                            Deletado = false,
+                            Descricao = "Decoração"
+                        },
+                        new
+                        {
+                            Id = 33,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4890),
+                            Deletado = false,
+                            Descricao = "Automotivo"
+                        },
+                        new
+                        {
+                            Id = 34,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4892),
+                            Deletado = false,
+                            Descricao = "Móveis"
+                        },
+                        new
+                        {
+                            Id = 35,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4893),
+                            Deletado = false,
+                            Descricao = "Farmácia"
+                        },
+                        new
+                        {
+                            Id = 36,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4894),
+                            Deletado = false,
+                            Descricao = "Festas"
+                        },
+                        new
+                        {
+                            Id = 37,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4895),
+                            Deletado = false,
+                            Descricao = "Tecnologia"
+                        },
+                        new
+                        {
+                            Id = 38,
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4896),
+                            Deletado = false,
+                            Descricao = "Orgânicos"
+                        });
                 });
 
             modelBuilder.Entity("api.Model.Cliente", b =>
@@ -191,7 +431,7 @@ namespace api.Migrations
                         {
                             Id = 1,
                             Banco = 0,
-                            CriadoEm = new DateTime(2023, 10, 18, 10, 12, 30, 325, DateTimeKind.Local).AddTicks(9270),
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4642),
                             Deletado = false,
                             Descricao = "Caixa Interno",
                             Permanente = true
@@ -243,7 +483,6 @@ namespace api.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Parcelas")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<bool?>("Permantente")
@@ -268,7 +507,7 @@ namespace api.Migrations
                             CategoriaPagamento = 1,
                             CodigoAutorizacao = false,
                             ContaBancariaId = 1,
-                            CriadoEm = new DateTime(2023, 10, 18, 10, 12, 30, 325, DateTimeKind.Local).AddTicks(9485),
+                            CriadoEm = new DateTime(2023, 10, 18, 18, 26, 28, 709, DateTimeKind.Local).AddTicks(4934),
                             Deletado = false,
                             Descricao = "Dinheiro",
                             DiasFaturamento = 0,
@@ -484,7 +723,7 @@ namespace api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CaixaId")
+                    b.Property<int?>("CaixaId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("CategoriaPagamento")
@@ -496,7 +735,7 @@ namespace api.Migrations
                     b.Property<int?>("ContaBancariaId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("DataPagamentoEfetuado")
+                    b.Property<DateTime?>("DataPagamentoEfetuado")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("DataVencimento")
@@ -511,6 +750,9 @@ namespace api.Migrations
 
                     b.Property<string>("Nsu")
                         .HasColumnType("TEXT");
+
+                    b.Property<int?>("NumeroParcelas")
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("Pago")
                         .HasColumnType("INTEGER");
@@ -643,9 +885,7 @@ namespace api.Migrations
                 {
                     b.HasOne("api.Model.Caixa", "Caixa")
                         .WithMany()
-                        .HasForeignKey("CaixaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CaixaId");
 
                     b.HasOne("api.Model.Cliente", "Cliente")
                         .WithMany()

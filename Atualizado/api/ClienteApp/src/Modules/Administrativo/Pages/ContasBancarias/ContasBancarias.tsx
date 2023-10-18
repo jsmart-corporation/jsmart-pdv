@@ -1,7 +1,6 @@
 import JSDataGrid from '../../../../JSCommon/Components/JSDataGrid'
 import "./style.css";
 import { FiPlus } from "react-icons/fi";
-import { CiBank } from "react-icons/ci";
 import { GridColDef } from '@mui/x-data-grid';
 import { AiFillEdit } from 'react-icons/ai';
 import { useState } from 'react';
@@ -9,6 +8,7 @@ import NovaContaBancaria from '../../Components/Dialogs/NovaContaBancaria/NovaCo
 import { useContasBancarias } from '../../../../Common/Services/Swr/SwrServices';
 import { bancos } from '../../../../Common/Containts/ListasDrowDown';
 import { ContaBancaria } from '../../../../Common/Interfaces';
+import { BsBank2 } from 'react-icons/bs';
 
 export default function ContasBancarias() {
   const [novaContaBancaria,setNovaContaBancaria] = useState(false);
@@ -95,7 +95,7 @@ export default function ContasBancarias() {
     <div className="conta-bancaria">
     <div className="top">
         <div className="left">
-          <CiBank className="icon" />
+          <BsBank2 className="icon" />
           <span>Contas Bancárias</span>
         </div>
         <div className="right">

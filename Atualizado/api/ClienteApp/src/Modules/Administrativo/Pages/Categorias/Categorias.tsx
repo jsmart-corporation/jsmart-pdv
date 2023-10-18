@@ -1,7 +1,6 @@
 import JSDataGrid from '../../../../JSCommon/Components/JSDataGrid'
 import "./style.css";
 import { FiPlus } from "react-icons/fi";
-import { CiBank } from "react-icons/ci";
 import { GridColDef } from '@mui/x-data-grid';
 import { AiFillEdit } from 'react-icons/ai';
 import { useState } from 'react';
@@ -9,6 +8,7 @@ import { bancos } from '../../../../Common/Containts/ListasDrowDown';
 import { ICategoria } from '../../../../Common/Interfaces';
 import { useCategorias } from '../../../../Common/Services/Swr/SwrServices';
 import NovaCategoria from '../../Components/Dialogs/NovaCategoria/NovaCategoria';
+import { BiSolidPurchaseTag } from 'react-icons/bi';
 
 export default function Categorias() {
   const [novaCategoria,setNovaCategoria] = useState(false);
@@ -70,7 +70,7 @@ export default function Categorias() {
     <div className="categoria">
     <div className="top">
         <div className="left">
-          <CiBank className="icon" />
+          <BiSolidPurchaseTag className="icon" />
           <span>Categorias</span>
         </div>
         <div className="right">

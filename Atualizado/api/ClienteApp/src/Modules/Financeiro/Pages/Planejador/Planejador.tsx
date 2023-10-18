@@ -1,6 +1,5 @@
 import JSDataGrid, { CustomCheckbox } from '../../../../JSCommon/Components/JSDataGrid'
 import "./style.css";
-import { CiBank } from "react-icons/ci";
 import { GridColDef, GridRowSelectionModel } from '@mui/x-data-grid';
 import { useFinPlanejador } from '../../../../Common/Services/Swr/SwrServices';
 import { maskCurrency } from '../../../../Utils/Formatacoes';
@@ -11,14 +10,22 @@ import { useEffect, useState } from 'react';
 import { AiFillEdit } from 'react-icons/ai';
 import {HiOutlineDocumentDownload} from 'react-icons/hi'
 import BaixarContas from '../../Components/Dialogs/BaixarContas/BaixarContas';
-import { RiExchangeDollarFill } from 'react-icons/ri';
+import { RiExchangeFundsLine } from 'react-icons/ri';
+import dayjs, { Dayjs } from 'dayjs';
 
+import { SingleInputDateRangeField } from '@mui/x-date-pickers-pro/SingleInputDateRangeField';
+import { DateRange } from '@mui/x-date-pickers-pro';
+import { JSDataPicker } from '../../../../JSCommon/Components/JSDataPicker';
 
 export default function Planejador() {
   
-  const {pagamentos,isLoading} = useFinPlanejador();
   const [novaTransacao,setNovaTransacao] = useState(false)
   const [pagamentosSelecionados,setPagamentosSelecionados] = useState<GridRowSelectionModel>([])
+  const [data, setData] = useState<DateRange<Dayjs>>([
+    dayjs(),
+    dayjs(),
+  ]);
+  const {pagamentos,isLoading} = useFinPlanejador(data[0]?.toISOString(),data[1]?.toISOString());
   const [baixarContas,setBaixarContas] = useState<boolean>(false);
   const columnsPayment: GridColDef[] = [
     {
@@ -127,12 +134,19 @@ export default function Planejador() {
 
   }
  },[pagamentosSelecionados])
+ useEffect(() => {},[data])
   return (
     <div className="planejador">
     <div className="top">
         <div className="left">
-          <RiExchangeDollarFill className="icon" />
-          <span>Planejador</span>
+          <RiExchangeFundsLine className="icon" />
+          <span>Planejador</span>        
+            <JSDataPicker
+              sx={{ml: 2,width: 220}}  
+              defaultValue={data}
+              onChange={(data:any) => setData(data)}
+              slots={{ field: SingleInputDateRangeField }}
+            />     
         </div>
         <div className="right">
           {

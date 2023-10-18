@@ -16,7 +16,6 @@
     "win": {
       "icon": "./LogoMarca.ico"
     }
-    
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -27,6 +26,7 @@
     "@mui/styled-engine-sc": "^5.14.12",
     "@mui/x-data-grid": "^6.16.1",
     "@mui/x-date-pickers": "^6.16.2",
+    "@mui/x-date-pickers-pro": "^6.16.2",
     "axios": "^1.5.1",
     "dayjs": "^1.11.10",
     "electron": "^27.0.0",

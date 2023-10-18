@@ -1,7 +1,6 @@
 import JSDataGrid from '../../../../JSCommon/Components/JSDataGrid'
 import "./style.css";
 import { FiPlus } from "react-icons/fi";
-import { CiBank } from "react-icons/ci";
 import { GridColDef } from '@mui/x-data-grid';
 import { AiFillEdit } from 'react-icons/ai';
 import { useState } from 'react';
@@ -12,6 +11,7 @@ import NovoProduto from '../../Components/Dialogs/NovoProduto/NovoProduto';
 import { maskCurrency } from '../../../../Utils/Formatacoes';
 import { InputAdornment } from '@mui/material';
 import { JSTextField } from '../../../../JSCommon/Components/JSTextField';
+import { BiBarcodeReader } from 'react-icons/bi';
 
 export default function Produtos() {
   const [novoProduto,setNovoProduto] = useState(false);
@@ -107,7 +107,7 @@ export default function Produtos() {
     <div className="categoria">
     <div className="top">
         <div className="left">
-          <CiBank className="icon" />
+          <BiBarcodeReader className="icon" />
           <span>Produtos</span>
         </div>
         <div className="right">

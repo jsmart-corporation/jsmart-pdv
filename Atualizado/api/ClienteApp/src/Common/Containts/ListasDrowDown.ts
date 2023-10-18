@@ -432,6 +432,6 @@ export const tipoTransacaoPagamento: IType[] = [
   },
   {
     code: 1,
-    name: "Dispensa",
+    name: "Despesa",
   },
 ];

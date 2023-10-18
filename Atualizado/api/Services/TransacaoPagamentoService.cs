@@ -15,8 +15,12 @@ namespace api.Services
             _context = context;
         }
 
-        public async Task<dynamic> GetFinTransacoesPagamento() 
-            => await _context.TransacaoPagamentos.Include(x => x.Cliente).Include(x => x.FinMetodoPagamento).Include(x => x.ContaBancaria).ToListAsync();
+        public async Task<dynamic> GetFinTransacoesPagamento(DateTime inicio,DateTime final)
+        {
+            IQueryable<TransacaoPagamento> query = _context.TransacaoPagamentos.Include(x => x.Cliente).Include(x => x.FinMetodoPagamento).Include(x => x.ContaBancaria);
+            query = query.Where(x => x.DataVencimento.Date >= inicio.Date && x.DataVencimento.Date <= final.Date);
+            return await query.ToListAsync();
+        }
         public async Task<dynamic> PostTransacaoPagamentosAsync(TransacaoPagamento pagamento)
         {
             await _context.TransacaoPagamentos.AddAsync(pagamento);

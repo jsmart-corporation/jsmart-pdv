@@ -27,6 +27,10 @@ namespace api.Controllers
         [Authorize]
         public async Task<ActionResult> GetAllCategorias()
             => Ok(await _service.GetAllCategorias());
+        [HttpGet("teste")]
+ 
+        public async Task<ActionResult> GetAlslCategorias()
+           => Ok(await _service.GetAllCategorias());
 
         [HttpPatch]
         [Authorize]

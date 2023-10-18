@@ -22,7 +22,7 @@ namespace api.Controllers
         }
 
         [HttpGet("all")]
-        public async Task<ActionResult> GetFinTransacoesPagamento() => Ok(await _service.GetFinTransacoesPagamento());
+        public async Task<ActionResult> GetFinTransacoesPagamento([FromQuery]DateTime inicial,[FromQuery] DateTime final) => Ok(await _service.GetFinTransacoesPagamento(inicial,final));
 
         [HttpPost("planejador")]
         public async Task<ActionResult> PostTransacaoPlanejador(TransacaoPagamento pagamento) => Ok(await _service.PostTransacaoPagamentosAsync(pagamento));

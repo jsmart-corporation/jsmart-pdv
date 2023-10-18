@@ -44,3 +44,6 @@ div::-webkit-scrollbar-thumb {
 div:hover::-webkit-scrollbar-thumb {
   visibility: visible;
 }
+.MuiDateRangeCalendar-root > div:first-child {
+  display: none !important;
+}

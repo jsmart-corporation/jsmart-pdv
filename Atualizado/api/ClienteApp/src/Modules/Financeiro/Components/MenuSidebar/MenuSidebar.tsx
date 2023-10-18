@@ -4,7 +4,7 @@ import {HiDesktopComputer} from 'react-icons/hi'
 import { BiCartDownload, BiHome} from 'react-icons/bi'
 import {TbDeviceDesktopAnalytics} from 'react-icons/tb'
 import { NavLink } from 'react-router-dom';
-import { RiExchangeDollarFill } from 'react-icons/ri';
+import { RiExchangeFundsLine } from 'react-icons/ri';
 
 
 interface ITab {
@@ -66,7 +66,7 @@ export function NavigationMenu({fechaDrawer} : {fechaDrawer(): void}) {
         },
         {
           key: 2,
-          icon: RiExchangeDollarFill,
+          icon: RiExchangeFundsLine,
           function: () => fechaDrawer(),
           link: '/fin/planejador',
           placeholder: "Planejador",

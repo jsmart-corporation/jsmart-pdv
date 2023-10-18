@@ -15,7 +15,7 @@ namespace api.Services
             _context = context;
         }
 
-        public async Task<dynamic> GetAllCategorias() => await _context.Categorias.Where(x => !x.Deletado).ToListAsync();
+        public async Task<dynamic> GetAllCategorias() => await _context.Categorias.ToListAsync();
         public async Task<dynamic> PostCategoriaAsync(Categoria categoria)
         {
             var find = await _context.Categorias.Where(x => x.Descricao == categoria.Descricao && !x.Deletado).FirstOrDefaultAsync();
