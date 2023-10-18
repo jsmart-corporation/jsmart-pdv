@@ -9,7 +9,7 @@ import { maskCurrency } from '../../../../../Utils/Formatacoes'
 import { useProdutosRecomendados } from '../../../../../Common/Services/Swr/SwrServices'
 import Logo from '../../../../../assets/LogoMarca.svg'
 import LogoMiddle from '../../../../../assets/Logo.svg'
-
+import EmptyImage from '../../../../../assets/EmptyImage.png'
 import moment from 'moment'
 import ScanCodBarra from '../../../../../JSCommon/Components/ScanCodBarra'
 import { GetProdutoCodigoBarraAsync } from '../../../../../Common/Services/Axios/ProdutoServices'
@@ -146,7 +146,7 @@ const ProdutosRecomendados = ({produto,onClick}:{produto: Produto,onClick: Mouse
   return(
     <div className="recomendados-card p-ripple" onClick={onClick}>
       <div className="image-content">
-        {produto.imagem && <img src={'data:image/jpeg;base64,'+produto.imagem} alt="" />}
+        {produto.imagem ? <img src={'data:image/jpeg;base64,'+produto.imagem} alt="" /> : <img src={EmptyImage} className='img-empty'/>}
       </div>
       <div className="labels">
         <div className="item-elips" >

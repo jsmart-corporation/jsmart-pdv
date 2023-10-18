@@ -41,5 +41,9 @@ namespace api.Controllers
         [Authorize]
         public async Task<ActionResult> GetClienteCPFCNPJAsync(string doc)
             => Ok(await _service.GetClienteCPFCNPJAsync(doc));
+        [HttpGet("filtro")]
+        [Authorize]
+        public async Task<ActionResult> GetClienteFiltro(string cliente)
+            => Ok(await _service.GetClienteFiltro(cliente));
     }
 }

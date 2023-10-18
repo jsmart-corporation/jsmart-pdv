@@ -55,15 +55,7 @@ namespace api.Services
         }
         public async Task<dynamic> GetMetodosPagamentos()
         {
-            return await _appDbContext.FormasPagamento.Where(x => !x.Deletado).Select(x => new
-            {
-                x.Id,
-                x.CategoriaPagamento,
-                x.CodigoAutorizacao,
-                x.Descricao,
-                x.Taxa,
-                x.DiasFaturamento
-            }).ToListAsync();
+            return await _appDbContext.FormasPagamento.Where(x => !x.Deletado).ToListAsync();
         }
     }
 }

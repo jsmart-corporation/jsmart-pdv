@@ -32,6 +32,11 @@ interface IPropsData{
   onEdit?(value: IFormaPagamento) :void;
   onRemove?(value: IFormaPagamento) :void;
 }
+export interface IParcelas {
+  parcela: number,
+  taxa: string,
+}
+
 
 export default function NovaFormaPagamento({aberto,formaPagamentoEditar,onClose,onPost,onEdit,onRemove}: IPropsData) {
   const [banco,setBanco] = useState<number>(0);
@@ -42,12 +47,21 @@ export default function NovaFormaPagamento({aberto,formaPagamentoEditar,onClose,
   const [taxa,setTaxa] = useState<string>('0.0');
   const [nsu,setNsu] = useState<boolean>(false);
   const [troco,setTroco] = useState<boolean>(true);
+  const [baixaAutomatica,setBaixaAutomatica] = useState<boolean>(true);
   const [descricao,setDescricao] = useState<string>('Nova Forma Pagamento');
-
+  const [parcelas,setParcelas] = useState<IParcelas[] | null>(null);
+  const [parcelaSelecionada,setParcelaSelecionada] = useState<number>(1);
   const {AbrirDialogoLoading,FechaDialogoLoading} = useContext(LoadingDialogContext)
   const {contasBancarias,isLoading} = useContasBancarias()
 
-
+  useEffect(() => {
+    if(categoria === 3){
+      setTaxa(parcelas?.find(x => x.parcela === parcelaSelecionada)?.taxa.toString()?? "0")
+    }else{
+      setTaxa("0.00")
+      setParcelaSelecionada(1)
+    }
+  },[categoria,parcelaSelecionada])
   useEffect(() => {
     if(!aberto){
       LimpaCampos()
@@ -66,6 +80,7 @@ export default function NovaFormaPagamento({aberto,formaPagamentoEditar,onClose,
     setTaxa('0.0')
     setNsu(false)
     setTroco(true)
+    setParcelas(initParcelas())
     setDescricao('Nova Forma Pagamento')
   }
   const EditaCampos = () => {
@@ -79,6 +94,13 @@ export default function NovaFormaPagamento({aberto,formaPagamentoEditar,onClose,
     setNsu(formaPagamentoEditar.codigoAutorizacao)
     setTroco(formaPagamentoEditar.aceitarTroco)
     setDescricao(formaPagamentoEditar.descricao)
+    if(formaPagamentoEditar.parcelas){
+      setParcelas(JSON.parse(formaPagamentoEditar.parcelas))
+    }else{
+      console.log("Nulo")
+      setParcelas(initParcelas())
+    }
+    setBaixaAutomatica(formaPagamentoEditar.baixaAutomatica)
   }
 
   const verify = () => {
@@ -100,6 +122,8 @@ export default function NovaFormaPagamento({aberto,formaPagamentoEditar,onClose,
       taxa: parseFloat(taxa),
       credenciadora: credenciadora == '' ? null : credenciadora,
       contaBancariaId: banco == 0 ? null : banco,
+      parcelas: JSON.stringify(parcelas),
+      baixaAutomatica: baixaAutomatica
     }
     AbrirDialogoLoading("Inserindo...")
     try{
@@ -124,7 +148,9 @@ export default function NovaFormaPagamento({aberto,formaPagamentoEditar,onClose,
       criadoEm: formaPagamentoEditar?.criadoEm,
       deletado: formaPagamentoEditar?.deletado,
       permantente: formaPagamentoEditar?.permantente,
-      deletadoEm: formaPagamentoEditar?.deletadoEm
+      deletadoEm: formaPagamentoEditar?.deletadoEm,
+      parcelas: categoria === 3 ? JSON.stringify(parcelas) : null,
+      baixaAutomatica: baixaAutomatica
     }
     AbrirDialogoLoading("Editando...")
     try{
@@ -142,6 +168,31 @@ export default function NovaFormaPagamento({aberto,formaPagamentoEditar,onClose,
     }finally{
       FechaDialogoLoading()
     }
+  }
+  const handleChangeTaxa = (value: string) => {
+    if(categoria === 3){
+      let index = parcelas?.findIndex(x => x.parcela === parcelaSelecionada);
+      if(index){
+        let parcelaEditar = [...parcelas!];
+        parcelaEditar[index].taxa = FormatarPorcentagem(value);
+        setParcelas(parcelaEditar)
+      }
+    }else{
+      setTaxa(FormatarPorcentagem(value))
+    }
+  }
+  const initParcelas = () =>{
+    let parcelasDTO: IParcelas[] = [];
+    for (let index = 0; index < 12; index++) {
+      let newParcela: IParcelas = {
+        parcela: index + 1,
+        taxa: `${ index + 1 }.00`
+      }
+      parcelasDTO.push(newParcela)
+      
+    } 
+      
+    return parcelasDTO;
   }
   return (
     <Dialog
@@ -232,11 +283,28 @@ export default function NovaFormaPagamento({aberto,formaPagamentoEditar,onClose,
                 </Select>
               </JSSelect>
               <JSTextField sx={{width: 350}} value={dias} onChange={(x) => setDias(Number(FormatarInteiro(x.target.value)))} label="Dias para Faturamento" />
-              <JSTextField sx={{width: 350}} value={maskPercent(taxa)} onChange={(x) => setTaxa(FormatarPorcentagem(x.target.value))} label="Taxa" />
+              {
+                categoria === 3 && <JSSelect sx={{width: 350}}>
+                <InputLabel id="demo-simple-select-label">Parcelas</InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={parcelaSelecionada}
+                  placeholder="Bandeira"
+                  label="Bandeira"
+                  onChange={(_x) => setParcelaSelecionada(parseInt(_x.target.value as string)?? 1)}
+                >
+                  
+                  {parcelas?.map(x => <MenuItem key={x.parcela} value={x.parcela}>{x.parcela}</MenuItem>)}
+                </Select>
+              </JSSelect>
+              }
+              <JSTextField sx={{width: 350}} value={categoria === 3 ? maskPercent(parcelas?.find(x => x.parcela === parcelaSelecionada)?.taxa?? "0") : maskPercent(taxa)} onChange={(x) => handleChangeTaxa(x.target.value)} label="Taxa" />
             </div>
             <div className="bottom">
             <FormControlLabel disabled={formaPagamentoEditar?.permantente} checked={nsu}  control={<Checkbox  onChange={(x: React.ChangeEvent<HTMLInputElement>) => setNsu(x.target.checked)} />} label="Código de Autorização (NSU)" />
             <FormControlLabel checked={troco} control={<Checkbox  onChange={(x: React.ChangeEvent<HTMLInputElement>) => setTroco(x.target.checked)} />} label="Aceitar Troco" />
+            <FormControlLabel checked={baixaAutomatica} control={<Checkbox  onChange={(x: React.ChangeEvent<HTMLInputElement>) => setBaixaAutomatica(x.target.checked)} />} label="Baixa Automatica" />
             </div>
           </div>
           

@@ -1,5 +1,5 @@
 import './style.css'
-import {FaMoneyBillAlt} from 'react-icons/fa'
+import {FaMoneyBillAlt, FaUsersCog} from 'react-icons/fa'
 import {BsBank2} from 'react-icons/bs'
 import {HiDesktopComputer,HiUsers} from 'react-icons/hi'
 import {BiBarcodeReader, BiHome, BiSolidPurchaseTag} from 'react-icons/bi'
@@ -78,14 +78,14 @@ export function NavigationMenu({fechaDrawer} : {fechaDrawer(): void}) {
           placeholder: " Clientes",
           isPage: true
         },
-        // {
-        //   key: 4,
-        //   icon: FaUsersCog,
-        //   function: () => fechaDrawer(),
-        //   link: '/admin/usuarios',
-        //   placeholder: "Usuarios",
-        //   isPage: true
-        // },
+        {
+          key: 4,
+          icon: FaUsersCog,
+          function: () => fechaDrawer(),
+          link: '/admin/usuarios',
+          placeholder: "Usuarios",
+          isPage: true
+        },
         {
           key: 5,
           icon: FaMoneyBillAlt,

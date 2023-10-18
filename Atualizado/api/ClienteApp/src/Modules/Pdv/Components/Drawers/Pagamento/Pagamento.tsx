@@ -1,7 +1,6 @@
 import DrawerShell from '../DrawerShell'
 import './style.css'
 import { useContext, useEffect, useRef, useState } from 'react'
-import * as ComponentsContext from '../../ComponentsServices'
 
 
 import { Ripple } from 'primereact/ripple'
@@ -12,10 +11,14 @@ import { toast } from 'react-toastify'
 import { PagamentoContext } from './PagamentoContext'
 import { TransacaoContext, TransacaoStatus } from '../../../../../Common/Context/TransacaoContext'
 import { CaixaContext } from '../../../../../Common/Context/CaixaContext'
-import { FormaPagamento, MetodoPagamento, PagamentoTransacao } from '../../../../../Common/Interfaces'
+import { FormaPagamento, IFormaPagamento, PagamentoTransacao } from '../../../../../Common/Interfaces'
 import { FormatarDecimal, maskCurrency, removerLetrasEPontos } from '../../../../../Utils/Formatacoes'
 import { JSTextField } from '../../../../../JSCommon/Components/JSTextField'
 import { useMetodosPagamento } from '../../../../../Common/Services/Swr/SwrServices'
+import { InputLabel, MenuItem, Select } from '@mui/material'
+import { JSSelect } from '../../../../../JSCommon/Components/JSSelect'
+import { IParcelas } from '../../../../Administrativo/Components/Dialogs/NovaFormaPagamento/NovaFormaPagamento'
+import { categoriasPagamento } from '../../../../../Common/Containts/ListasDrowDown'
 
 export default function Pagamento() {
   const {FechaDrawerPagamento,drawerPagamentoAberto,AbreDrawerPagamento} = useContext(PagamentoContext)
@@ -26,7 +29,8 @@ export default function Pagamento() {
   const [totalPago,setTotalPago] = useState<number>(0)
   const [tipoSelecionado,setTipoSelecionado] = useState<FormaPagamento | null>(null)
   const {metodosPagamento} = useMetodosPagamento()
-  const [metodoSelecionado,setMetodoSelecionado] = useState<MetodoPagamento | null>(null)
+  const [metodoSelecionado,setMetodoSelecionado] = useState<IFormaPagamento | null>(null)
+  const [parcelaSelecionada,setParcelaSelecionada] = useState<number>(1);
   const [valor,setValor] = useState<string>('0.00')
   const [nsu,setNsu] = useState<string>('')
 
@@ -70,6 +74,7 @@ export default function Pagamento() {
     }
     setNsu('')
     setValor('0.00')
+    setParcelaSelecionada(1)
   },[tipoSelecionado])
   useEffect(() => {
     if(totalRestante > 0) {
@@ -108,20 +113,24 @@ export default function Pagamento() {
       toast.warn("Valor maior que o restante")
       return;
     }
-
+      let Parcelas:IParcelas[] | null = metodoSelecionado?.parcelas ? JSON.parse(metodoSelecionado?.parcelas) : null;
       let Pagamento = new PagamentoTransacao();
         Pagamento.Descricao = metodoSelecionado?.descricao!;
+        Pagamento.ContaBancariaId = metodoSelecionado?.contaBancariaId?? null;
         Pagamento.FinMetodoPagamentoId = metodoSelecionado?.id!;
         Pagamento.FormaPagamento = metodoSelecionado?.categoriaPagamento!;
         Pagamento.Valor = parseFloat(valor);
         Pagamento.Nsu = nsu === '' ? null : nsu;
         Pagamento.CaixaId = caixa?.id!;
-        Pagamento.Porcentagem = metodoSelecionado?.taxa!;
+        Pagamento.Porcentagem = Parcelas ? parseFloat(Parcelas.find(x => x.parcela === parcelaSelecionada)?.taxa?? "0.00") : metodoSelecionado?.taxa!;
         Pagamento.DiasPrevisao = metodoSelecionado?.diasFaturamento!;
+        Pagamento.NumeroParcelas = metodoSelecionado?.categoriaPagamento === 3 ? parcelaSelecionada : null;
+        Pagamento.Pago = metodoSelecionado?.baixaAutomatica ? true : false;
       AdicionaPagamento(Pagamento)
       setTipoSelecionado(null)
       setMetodoSelecionado(null)
       setTotalPago(totalPago + parseFloat(valor));
+      console.log(metodoSelecionado)
   }
   const VerificaRemovePagamento = (pagamento: PagamentoTransacao,index: number) =>{
       RemovePagamento(index);
@@ -199,6 +208,25 @@ export default function Pagamento() {
               {metodoSelecionado.codigoAutorizacao && 
                 <JSTextField onKeyDown={(e) => e.key === 'Enter' ? AdicionarPagamento() : null} value={nsu} label="NSU" fullWidth onChange={(e) => setNsu(removerLetrasEPontos(e.target.value))}/>
               }
+              {metodoSelecionado.categoriaPagamento === 3 && 
+              <JSSelect fullWidth sx={{maxWidth: 200}}>
+                <InputLabel id="demo-simple-select-label">Nº Parcelas</InputLabel>
+                <Select
+                  // disabled={formaPagamentoEditar?.permantente}
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={parcelaSelecionada}
+                  placeholder="Nº Parcelas"
+                  label="Nº Parcelas"
+                  onChange={(x) => setParcelaSelecionada(parseInt(x.target.value as string)?? 0)}
+                >
+                  <MenuItem disabled value={0} style={{display: 'none'}}>
+                    <em>Selecione</em>
+                  </MenuItem>
+                  {JSON.parse(metodoSelecionado.parcelas).map((x: IParcelas) => <MenuItem  key={x.parcela} value={x.parcela}>{x.parcela}</MenuItem>)}
+                </Select>
+              </JSSelect>
+            }
               <div className={"button-adicionar p-ripple " + (parseFloat(valor) === 0 ? 'disabled' : '')} onClick={() => AdicionarPagamento()}>
                 <span>Adicionar</span>
                 <Ripple/>
@@ -215,7 +243,7 @@ export default function Pagamento() {
                 </div>
                 <div className="middle">
                     <span className="descricao">{x.Descricao}</span>
-                    <span className="tipo">[Tipo: {ConverterTipoPagamentoString(x.FormaPagamento)}]  {x.Nsu !== null ?  `   [NSU: ${x.Nsu}]`  : ''}</span>
+                    <span className="tipo">[Tipo: {ConverterTipoPagamentoString(x.FormaPagamento)}]  {x.Nsu !== null ?  `   [NSU: ${x.Nsu}]`  : ''} {x.NumeroParcelas !== null ? ` [Parcelas: ${x.NumeroParcelas}]` : ''}</span>
                 </div>
                 <div className="right">
                     <span className="valor">{maskCurrency(x.Valor)}</span>

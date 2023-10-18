@@ -33,6 +33,7 @@
   .planejador > .top > .right > .button {
     color: #fff;
     padding: 10px 20px;
+    height: 40px;
     background: #272727;
     display: flex;
     align-items: center;
@@ -41,6 +42,20 @@
     cursor: pointer;
     transition: 0.1s ease-in-out;
     font-size: 1.3rem;
+  }
+  .planejador > .top > .right > .button-baixar{
+    color: #fff;
+    padding: 10px 10px;
+    height: 40px;
+    background: var(--blue);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .planejador > .top > .right > .button-baixar > .icon{
+    font-size: 1.4rem;
   }
   .planejador > .top > .right > .button.green {
     background: var(--primary);
@@ -89,4 +104,12 @@
     background: rgba(112, 247, 107, 0);
     color: var(--text);
     padding: 0;
+  }
+
+  .planejador .value-label{
+    color: rgb(20, 189, 124);
+    font-weight: 500;
+  }
+  .planejador .value-label.dispensa{
+    color: rgb(247, 107, 107);
   }

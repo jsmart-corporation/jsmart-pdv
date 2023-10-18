@@ -1,6 +1,6 @@
 import useSWR from "swr";
 import { api } from "../../Api/AxiosApi";
-import { CaixaSessao, ContaBancaria, ICategoria, IClientes, IFormaPagamento, MetodoPagamento, Produto, Transacao, TransacaoFinanceiro, TransacaoPagamentoFinanceiro } from "../../Interfaces";
+import { CaixaSessao, ContaBancaria, ICategoria, IClientes, IFormaPagamento, Produto, TransacaoFinanceiro, TransacaoPagamentoFinanceiro } from "../../Interfaces";
 
 export const useContasBancarias = () => {
     const {data:contasBancarias, mutate, isLoading} = useSWR<ContaBancaria[]>(`api/contabancaria/all`, async url => {
@@ -42,7 +42,6 @@ export const useClientes = () => {
     
     return {clientes, mutate, isLoading}
 }
-
 export const useCaixaStatus = (auth: boolean) => {
     const {data:caixa,mutate: mutateCaixa,isLoading: isCaixaLoading} = useSWR<CaixaSessao>(auth ? `api/caixa/status` : null, async url => {
         const response = await api.get(url);
@@ -60,7 +59,7 @@ export const useProdutosRecomendados = () => {
     return {recomendados,mutate,isRecomendadosLoading}
 }
 export const useMetodosPagamento = () => {
-    const {data:metodosPagamento,mutate,isLoading} = useSWR<MetodoPagamento[]>(`api/formaspagamento/venda`, async url => {
+    const {data:metodosPagamento,mutate,isLoading} = useSWR<IFormaPagamento[]>(`api/formaspagamento/venda`, async url => {
         const response = await api.get(url);
         return response.data;
     },{refreshWhenOffline: true,revalidateOnReconnect: true})
@@ -82,4 +81,12 @@ export const useFinPlanejador = () => {
     },{refreshWhenOffline: true,revalidateOnReconnect: true})
     
     return {pagamentos,mutate,isLoading}
+}
+export const useClienteFiltro = (filtro: string) => {
+    const {data:clientes,mutate,isLoading: isClienteLoading} = useSWR<IClientes[]>(filtro.length > 2 ? `api/cliente/filtro?cliente=${filtro}` : null, async url => {
+        const response = await api.get(url);
+        return response.data;
+    },{refreshWhenOffline: true,revalidateOnReconnect: true})
+    
+    return {clientes,mutate,isClienteLoading}
 }

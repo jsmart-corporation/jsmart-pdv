@@ -1,18 +1,25 @@
-import JSDataGrid from '../../../../JSCommon/Components/JSDataGrid'
+import JSDataGrid, { CustomCheckbox } from '../../../../JSCommon/Components/JSDataGrid'
 import "./style.css";
 import { CiBank } from "react-icons/ci";
-import { GridColDef } from '@mui/x-data-grid';
-import { categoriasPagamento } from '../../../../Common/Containts/ListasDrowDown';
+import { GridColDef, GridRowSelectionModel } from '@mui/x-data-grid';
 import { useFinPlanejador } from '../../../../Common/Services/Swr/SwrServices';
 import { maskCurrency } from '../../../../Utils/Formatacoes';
 import moment from 'moment';
 import { FiPlus } from 'react-icons/fi';
+import NovaTransacao from '../../Components/Dialogs/NovaTransacao/NovaTransacao';
+import { useEffect, useState } from 'react';
+import { AiFillEdit } from 'react-icons/ai';
+import {HiOutlineDocumentDownload} from 'react-icons/hi'
+import BaixarContas from '../../Components/Dialogs/BaixarContas/BaixarContas';
+import { IFormaPagamento, TransacaoPagamentoFinanceiro } from '../../../../Common/Interfaces';
 
 export default function Planejador() {
   
   const {pagamentos,isLoading} = useFinPlanejador();
-  
-
+  const [novaTransacao,setNovaTransacao] = useState(false)
+  const [pagamentosSelecionados,setPagamentosSelecionados] = useState<GridRowSelectionModel>([])
+  const [baixarContas,setBaixarContas] = useState<boolean>(false);
+  const [firstPagamento,setFirstPagamento] = useState<TransacaoPagamentoFinanceiro | null>(null);
   const columnsPayment: GridColDef[] = [
     {
       field: "descricao",
@@ -29,7 +36,7 @@ export default function Planejador() {
       width: 140,
       hideable: false,
       renderCell(params) {
-        return maskCurrency(params.value);
+        return <span className={"value-label " + (params.row.tipoTransacao === 1 ? "dispensa" : "")}>{params.row.tipoTransacao === 1 ? "- " + maskCurrency(params.value) : "+ " + maskCurrency(params.value)}</span>;
       },
     },
     {
@@ -38,7 +45,7 @@ export default function Planejador() {
       width: 150,
       hideable: false,
       renderCell(params) {
-        return moment(params.value).format('l');
+        return <span className={"pago " + (params.value ? "transparente" : "") } >{params.value ? moment(params.value).format('l') : "Sem Data" }</span>;
       },
     },
     {
@@ -51,21 +58,21 @@ export default function Planejador() {
       },
     },
     {
-      field: "categoriaPagamento",
-      headerName: "Categoria",
-      width: 170,
+      field: "finMetodoPagamento",
+      headerName: "Forma Pagamento",
+      width: 200,
       hideable: false,
       renderCell(params) {
-        return categoriasPagamento.find(x => x.code === params.value)?.name;
+        return params.value ? params.value.descricao : "Sem Pagamento";
       },
     },
     {
-      field: "finMetodoPagamento",
+      field: "contaBancaria",
       headerName: "Conta",
       flex: 1,
       hideable: false,
       renderCell(params) {
-        return <span className={"pago " + (params.value.contaBancaria ? "transparente" : "") } >{params.value.contaBancaria ? params.value.contaBancaria.descricao : "Sem Conta"}</span>;
+        return <span className={"pago " + (params.value ? "transparente" : "") } >{params.value ? params.value.descricao : "Sem Conta"}</span>;
       },
     },
     {
@@ -86,26 +93,40 @@ export default function Planejador() {
         return <span className={"pago " + (params.value ? "sim" : "") } >{params.value ? "Sim" : "Não"}</span>;
       },
     },
-    // {
-    //   field: "buttons",
-    //   headerName: "",
-    //   width: 80,
-    //   sortable: false,
-    //   hideable: false,
-    //   renderCell(_params) {
-    //     return (
-    //       <div
-    //         className="edit-button p-ripple"
-    //         onClick={() => null}
-    //         data-pr-tooltip="Editar"
-    //       >
-    //         <AiFillEdit />
-    //       </div>
-    //     );
-    //   },
-    // },
+    {
+      field: "buttons",
+      headerName: "",
+      width: 80,
+      sortable: false,
+      hideable: false,
+      renderCell(_params) {
+        return (
+          <div
+            className="edit-button p-ripple"
+            onClick={() => null}
+            data-pr-tooltip="Editar"
+          >
+            <AiFillEdit />
+          </div>
+        );
+      },
+    },
   ];
- 
+  const getTotalContas = () => {
+      let valor = 0;
+      pagamentos?.filter(x => pagamentosSelecionados.includes(x.id)).map(x => {
+        valor += x.valor
+      })
+    return valor;
+  }
+ const handleClickNewTransaction =() =>{
+  setNovaTransacao(true)
+ }
+ useEffect(() => {
+  if(pagamentosSelecionados.length > 0){
+
+  }
+ },[pagamentosSelecionados])
   return (
     <div className="planejador">
     <div className="top">
@@ -114,9 +135,19 @@ export default function Planejador() {
           <span>Planejador</span>
         </div>
         <div className="right">
-        <div
+          {
+            pagamentosSelecionados.length > 0 && 
+            <div
+              className="button-baixar p-ripple"
+              onClick={() => setBaixarContas(!baixarContas)}
+              >
+              <HiOutlineDocumentDownload className="icon"/>
+              <span>Baixar Contas</span>
+            </div>
+          }
+          <div
             className="button blue p-ripple"
-            onClick={() => null}
+            onClick={() => handleClickNewTransaction()}
           >
             <FiPlus />
           </div>
@@ -131,12 +162,21 @@ export default function Planejador() {
       >
       <JSDataGrid
           rows={pagamentos?? []}
+          checkboxSelection
+          onRowSelectionModelChange={(newRowSelectionModel) => {
+            setPagamentosSelecionados(newRowSelectionModel);
+          }}
+          rowSelectionModel={pagamentosSelecionados}
           columns={columnsPayment}
           disableColumnMenu
+          isRowSelectable={x => x.row.pago === false}
+          disableColumnSelector
           density="compact"
           columnHeaderHeight={80}
           loading={isLoading}
           getRowId={(row) => row.id}
+          rowCount={50}
+          pageSizeOptions={[5]}
           disableRowSelectionOnClick
           localeText={{
             noRowsLabel: "Sem Informações",
@@ -144,8 +184,13 @@ export default function Planejador() {
               labelRowsPerPage: "Itens por pagina",
             },
           }}
+          components={{
+            BaseCheckbox: CustomCheckbox, // Substitua "CustomCheckbox" pelo seu componente personalizado, se necessário
+          }}
         />
       </div>
+      <NovaTransacao aberto={novaTransacao} onClose={() => setNovaTransacao(false)}/>
+      <BaixarContas aberto={baixarContas} onClose={() => setBaixarContas(false)} total={getTotalContas()}/>
     </div>
   )
 }

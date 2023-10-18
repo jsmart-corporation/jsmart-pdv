@@ -57,12 +57,12 @@ export default function FormasPagamento() {
       width: 200,
       hideable: false,
     },
-    {
-      field: "taxa",
-      headerName: "Taxa (%)",
-      width: 100,
-      hideable: false,
-    },
+    // {
+    //   field: "taxa",
+    //   headerName: "Taxa (%)",
+    //   width: 100,
+    //   hideable: false,
+    // },
     {
       field: "buttons",
       headerName: "",

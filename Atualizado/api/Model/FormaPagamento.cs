@@ -10,7 +10,7 @@ namespace api.Model
         [MaxLength(100)]
         [Required]
         public string Descricao { get; set; } = string.Empty;
-
+        
         [Required]
         public int CategoriaPagamento { get; set; }
 
@@ -31,9 +31,14 @@ namespace api.Model
 
         [Required]
         public bool CodigoAutorizacao { get; set; }
+        
+        [Required]
+        public bool BaixaAutomatica { get; set; }
 
         [Required]
         public bool AceitarTroco { get; set; }
+
+        public string? Parcelas { get; set; } = string.Empty;
 
         public bool? Permantente { get; set; } = false;
 

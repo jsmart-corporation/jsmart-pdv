@@ -142,14 +142,17 @@ export function TransacaoProvider({children} : TransacaoProviderProps) {
       transacao.Pagamentos.forEach(element => {
         let transacaoPagamentoDTO = new TransacaoPagamentoDTO();
         transacaoPagamentoDTO.CaixaId = element.CaixaId
-        transacaoPagamentoDTO.Descricao = element.Descricao,
+        transacaoPagamentoDTO.Descricao = null,
         transacaoPagamentoDTO.DiasPrevisao = element.DiasPrevisao,
         transacaoPagamentoDTO.FormaPagamento = element.FormaPagamento,
+        transacaoPagamentoDTO.ContaBancariaId = element.ContaBancariaId,
         transacaoPagamentoDTO.Nsu = element.Nsu,
         transacaoPagamentoDTO.Valor = element.Valor,
         transacaoPagamentoDTO.FinMetodoPagamentoId = element.FinMetodoPagamentoId
         transacaoPagamentoDTO.ClienteId = transacao.Cliente?.id?? null,
         transacaoPagamentoDTO.PorcentagemPagamento = element.Porcentagem,
+        transacaoPagamentoDTO.numeroParcelas = element.NumeroParcelas
+        transacaoPagamentoDTO.Pago = element.Pago
         transacaoDTO.TransacaoPagamentos.push(transacaoPagamentoDTO)
       });
       let valorTotalPago = 0;

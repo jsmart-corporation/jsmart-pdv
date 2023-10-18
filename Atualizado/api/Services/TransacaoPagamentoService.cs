@@ -1,4 +1,6 @@
 ﻿using api.Context;
+using api.Model;
+using JSmartPDV.DB.DTO.Transacao;
 using Microsoft.EntityFrameworkCore;
 
 namespace api.Services
@@ -13,6 +15,13 @@ namespace api.Services
         }
 
         public async Task<dynamic> GetFinTransacoesPagamento() 
-            => await _context.TransacaoPagamentos.Include(x => x.Cliente).Include(x => x.FinMetodoPagamento).ThenInclude(x => x.ContaBancaria).ToListAsync();
+            => await _context.TransacaoPagamentos.Include(x => x.Cliente).Include(x => x.FinMetodoPagamento).Include(x => x.ContaBancaria).ToListAsync();
+        public async Task<dynamic> PostTransacaoPagamentosAsync(TransacaoPagamento pagamento)
+        {
+            await _context.TransacaoPagamentos.AddAsync(pagamento);
+
+            await _context.SaveChangesAsync();
+            return pagamento;
+        }
     }
 }

@@ -16,8 +16,9 @@
   --background-secondary: #f3f3f3;
   --text: #000000af;
   --green: #504793 ;
-  --buttons: #18bc9bb1;
+  --buttons: #f3f3f3;
   --hover-table-row: #9f9f9f2e;
+  --blue: #2196f3;
 }
 
 [data-theme="dark"]{

@@ -1,6 +1,9 @@
 import { api } from "../../Api/AxiosApi";
-import { TransacaoDTO } from "../../Interfaces";
+import { TransacaoDTO, TransacaoPagamentoFinanceiro } from "../../Interfaces";
 
 export async function PostTransacaoAsync(transacao: TransacaoDTO) {
-    return await api.post(`api/transacoes`,transacao);
-  }
+  return await api.post(`api/transacoes`,transacao);
+}
+export async function PostTransacaoPagamentoAsync(transacao: TransacaoPagamentoFinanceiro) {
+  return await api.post(`api/transacoespagamento/planejador`,transacao);
+}

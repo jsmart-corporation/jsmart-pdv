@@ -1,5 +1,6 @@
 import { DataGrid } from "@mui/x-data-grid";
 import { styled } from "@mui/material/styles";
+import { Checkbox } from "@mui/material";
 
 const JSDataGrid = styled(DataGrid)(() => ({
   border: "2px solid",
@@ -55,6 +56,33 @@ const JSDataGrid = styled(DataGrid)(() => ({
   "& .MuiDataGrid-footerContainer": {
     "border-top": "2px solid var(--primary)",
   },
+  "& .MuiDataGrid-cell.MuiDataGrid-colSelecione .MuiCheckbox-root.Mui-disabled": {
+    pointerEvents: "auto",
+    "&:hover": {
+      backgroundColor: "transparent",
+    },
+    cursor: "not-allowed",
+    "& .MuiSvgIcon-root": {
+      backgroundColor: "pink",
+    },
+    // Outros estilos personalizados para o checkbox desabilitado
+  },
+ 
+  
 }));
 
 export default JSDataGrid;
+
+export const CustomCheckbox = styled(Checkbox)(() => ({
+  '&.Mui-disabled': {
+    display: 'none',
+    pointerEvents: 'auto',
+    '&:hover': {
+      backgroundColor: 'transparent',
+    },
+    cursor: 'not-allowed',
+    '& .MuiSvgIcon-root': {
+      backgroundColor: 'pink',
+    },
+  },
+}));

@@ -103,18 +103,26 @@
 
 }
 .recomendados-card > .image-content { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 120px;
     height: 80px;
     min-width: 120px;
     background: #fff;
     border-radius: 5px;
 }
-.recomendados-card > .image-content>  img{
+.recomendados-card > .image-content> img{
     width: 100px;
     height: 80px;
     min-width: 120px;
     border-radius: 5px;
-    background: #000;
+}
+.recomendados-card > .image-content> .img-empty{
+    object-fit: cover;
+    min-width: auto;
+    width: auto;
+    height: 70px;
 }
 .recomendados-card > .labels{
     display: flex;

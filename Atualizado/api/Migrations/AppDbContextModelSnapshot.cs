@@ -188,7 +188,7 @@ namespace api.Migrations
                         {
                             Id = 1,
                             Banco = 0,
-                            CriadoEm = new DateTime(2023, 10, 15, 19, 21, 5, 919, DateTimeKind.Local).AddTicks(3895),
+                            CriadoEm = new DateTime(2023, 10, 18, 11, 41, 3, 818, DateTimeKind.Local).AddTicks(3681),
                             Deletado = false,
                             Descricao = "Caixa Interno",
                             Permanente = true
@@ -202,6 +202,9 @@ namespace api.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("AceitarTroco")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("BaixaAutomatica")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Bandeira")
@@ -236,6 +239,9 @@ namespace api.Migrations
                     b.Property<int>("DiasFaturamento")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Parcelas")
+                        .HasColumnType("TEXT");
+
                     b.Property<bool?>("Permantente")
                         .HasColumnType("INTEGER");
 
@@ -253,14 +259,16 @@ namespace api.Migrations
                         {
                             Id = 1,
                             AceitarTroco = true,
+                            BaixaAutomatica = false,
                             Bandeira = 99,
                             CategoriaPagamento = 1,
                             CodigoAutorizacao = false,
                             ContaBancariaId = 1,
-                            CriadoEm = new DateTime(2023, 10, 15, 19, 21, 5, 919, DateTimeKind.Local).AddTicks(4133),
+                            CriadoEm = new DateTime(2023, 10, 18, 11, 41, 3, 818, DateTimeKind.Local).AddTicks(3901),
                             Deletado = false,
                             Descricao = "Dinheiro",
                             DiasFaturamento = 0,
+                            Parcelas = "",
                             Permantente = true,
                             Taxa = 0m
                         });
@@ -472,7 +480,7 @@ namespace api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CaixaId")
+                    b.Property<int?>("CaixaId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("CategoriaPagamento")
@@ -481,7 +489,10 @@ namespace api.Migrations
                     b.Property<int?>("ClienteId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("DataPagamentoEfetuado")
+                    b.Property<int?>("ContaBancariaId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("DataPagamentoEfetuado")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("DataVencimento")
@@ -491,17 +502,23 @@ namespace api.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("FormaPagamentoId")
+                    b.Property<int?>("FormaPagamentoId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Nsu")
                         .HasColumnType("TEXT");
+
+                    b.Property<int?>("NumeroParcelas")
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("Pago")
                         .HasColumnType("INTEGER");
 
                     b.Property<decimal?>("PorcentagemPagamento")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("TipoTransacao")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int?>("TransacaoId")
                         .HasColumnType("INTEGER");
@@ -517,6 +534,8 @@ namespace api.Migrations
                     b.HasIndex("CaixaId");
 
                     b.HasIndex("ClienteId");
+
+                    b.HasIndex("ContaBancariaId");
 
                     b.HasIndex("FormaPagamentoId");
 
@@ -623,19 +642,19 @@ namespace api.Migrations
                 {
                     b.HasOne("api.Model.Caixa", "Caixa")
                         .WithMany()
-                        .HasForeignKey("CaixaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CaixaId");
 
                     b.HasOne("api.Model.Cliente", "Cliente")
                         .WithMany()
                         .HasForeignKey("ClienteId");
 
+                    b.HasOne("api.Model.ContaBancaria", "ContaBancaria")
+                        .WithMany()
+                        .HasForeignKey("ContaBancariaId");
+
                     b.HasOne("api.Model.FormaPagamento", "FinMetodoPagamento")
                         .WithMany()
-                        .HasForeignKey("FormaPagamentoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("FormaPagamentoId");
 
                     b.HasOne("api.Model.Transacao", "Transacao")
                         .WithMany("TransacaoPagamentos")
@@ -644,6 +663,8 @@ namespace api.Migrations
                     b.Navigation("Caixa");
 
                     b.Navigation("Cliente");
+
+                    b.Navigation("ContaBancaria");
 
                     b.Navigation("FinMetodoPagamento");
 

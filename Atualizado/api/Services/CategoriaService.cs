@@ -66,5 +66,10 @@ namespace api.Services
             }
             return find;
         }
+        public async Task<dynamic> GetClienteFiltro(string filtro) => await _context.Clientes
+       .Where(x => EF.Functions.Like(x.Nome, "%" + filtro + "%") ||
+                   EF.Functions.Like(x.Cpf, "%" + filtro + "%") ||
+                   EF.Functions.Like(x.Cnpj, "%" + filtro + "%"))
+       .ToListAsync();
     }
 }

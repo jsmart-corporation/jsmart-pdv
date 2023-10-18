@@ -9,7 +9,7 @@ function createWindow() {
     height: 556,
     minWidth: 1100,
     minHeight: 556,
-    icon: path.join(__dirname, "./icon.ico"),
+    icon: "LogoMarca.ico",
 
     backgroundColor: "#000000",
     show: false,

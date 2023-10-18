@@ -58,7 +58,7 @@ namespace api.Services
             await _dbContext.SaveChangesAsync();
             return Items;
         }
-        public async Task<dynamic> PostTransacaoPagamentosAsync(List<TransacaoPagamentoDTO> transacaoPagamentos, int transacaoId)
+        public async Task<dynamic> PostTransacaoPagamentosAsync(List<TransacaoPagamentoDTO> transacaoPagamentos, int? transacaoId)
         {
             List<TransacaoPagamento> Items = new List<TransacaoPagamento>();
             foreach (var item in transacaoPagamentos)
@@ -66,16 +66,19 @@ namespace api.Services
                 TransacaoPagamento itemDTO = new TransacaoPagamento()
                 {
                     CaixaId = item.CaixaId,
-                    DataPagamentoEfetuado = DateTime.Now,
-                    Descricao = "Venda " + transacaoId,
+                    DataPagamentoEfetuado = item.Pago ? DateTime.Now : null,
+                    Descricao = item.Descricao != null ? item.Descricao : "Venda " + transacaoId,
                     FormaPagamentoId = item.FinMetodoPagamentoId,
                     CategoriaPagamento = item.FormaPagamento,
                     Nsu = item.Nsu,
                     Valor = item.Valor,
                     TransacaoId = transacaoId,
+                    ContaBancariaId = item.ContaBancariaId,
                     PorcentagemPagamento = item.PorcentagemPagamento,
+                    NumeroParcelas = item.NumeroParcelas,
                     ClienteId = item.ClienteId,
-
+                    TipoTransacao = item.TipoTransacao,
+                    Pago = item.Pago,
                 };
                 var porcentagem = item.PorcentagemPagamento / 100;
                 var calculado = item.Valor - item.Valor * porcentagem;

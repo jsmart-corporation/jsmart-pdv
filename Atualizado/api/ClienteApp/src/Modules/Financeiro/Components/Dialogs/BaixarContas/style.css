@@ -1,0 +1,92 @@
+.baixar-contas{
+    display: flex;
+    flex-direction: column;
+}
+.baixar-contas > .header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--green);
+    height: 60px;
+    padding: 0 20px;
+    box-shadow: 0 0 0.4rem #000;
+}
+.baixar-contas.dispensa > .header,
+.baixar-contas.dispensa > .bottom{
+    background: rgb(212, 64, 64);
+}
+.baixar-contas > .header > span{
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.baixar-contas > .header > .button-close{
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.baixar-contas > .header > .button-close:hover{
+    background: #0000001e;
+}
+.baixar-contas > .middle{
+    margin: 5px 0;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+.baixar-contas > .middle > .top{
+    margin: 5px 0;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 23px;
+
+}
+.baixar-contas > .middle  .bottom{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.baixar-contas > .middle  .bottom > .row{
+    outline: 1px solid #0000005e;
+    border-radius: 5px;
+    padding: 3px 10px;
+    
+}
+.baixar-contas > .bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    background: var(--green);
+    height: 50px;
+    box-shadow: 0 0 0.4rem #0000006c;
+}
+.baixar-contas > .bottom > .button-salvar{
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.baixar-contas > .bottom > .button-remove{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+}
+.baixar-contas > .bottom > .button-remove:hover,
+.baixar-contas > .bottom > .button-salvar:hover{
+    background: #0000001e;
+}
+.baixar-contas > .bottom > .button-salvar.disabled{
+    pointer-events: none;
+    color: #b3b3b3;
+}

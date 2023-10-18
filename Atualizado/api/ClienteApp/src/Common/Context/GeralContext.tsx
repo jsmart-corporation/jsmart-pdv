@@ -50,6 +50,7 @@ export default function GeralProvider({children}: IPropsData) {
         setUser(null);
         setAuthenticated(false)
         Navigate('/')
+        setSidebar(false)
     }
   return (
     <GeralContext.Provider value={{sidebar,user,authenticated,Login,setSidebar,LogOut}}>

@@ -7,6 +7,10 @@ import { ToastContainer } from 'react-toastify'
 import "primereact/resources/themes/rhea/theme.css";   
 import PrimeReact from "primereact/api"  
 import moment from 'moment'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import 'dayjs/locale/pt';
+
 
 function App() {
   PrimeReact.ripple = true;
@@ -69,13 +73,21 @@ function App() {
         doy : 6  // Usado para determinar a primeira semana do ano.
     }
 });
-
+const customFormats = {
+  dayMonthYear: {
+    day: 'numeric',
+    month: 'numeric',
+    year: 'numeric',
+  },
+};
   return (
     <>
       <LoadingDialogProvider>
-          <Router/>
-        <LoadingDialog/>
-        <ToastContainer/>
+      <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="pt">
+        <Router/>
+          <LoadingDialog/>
+          <ToastContainer/>
+        </LocalizationProvider>
       </LoadingDialogProvider>
     </>
   )

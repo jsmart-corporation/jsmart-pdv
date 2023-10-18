@@ -65,9 +65,9 @@ export default function Router() {
             <Route path='/pdv/venda' element={<GeralProvider><CaixaProvider>{PDVCompose(<Venda/>)}</CaixaProvider></GeralProvider>}/>
 
             {/* FINANCEIRO */}
-            <Route path='/fin/home' element={<GeralProvider><CaixaProvider>{FinCompose(<></>)}</CaixaProvider></GeralProvider>}/>
-            <Route path='/fin/vendas' element={<GeralProvider><CaixaProvider>{FinCompose(<FinVendas/>)}</CaixaProvider></GeralProvider>}/>
-            <Route path='/fin/planejador' element={<GeralProvider><CaixaProvider>{FinCompose(<Planejador/>)}</CaixaProvider></GeralProvider>}/>
+            <Route path='/fin/home' element={<GeralProvider>{FinCompose(<></>)}</GeralProvider>}/>
+            <Route path='/fin/vendas' element={<GeralProvider>{FinCompose(<FinVendas/>)}</GeralProvider>}/>
+            <Route path='/fin/planejador' element={<GeralProvider>{FinCompose(<Planejador/>)}</GeralProvider>}/>
 
         </Routes>
     </BrowserRouter>

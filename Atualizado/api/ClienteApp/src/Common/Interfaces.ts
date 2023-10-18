@@ -32,6 +32,8 @@ export interface IFormaPagamento {
     criadoEm?: Date;
     deletado?: boolean;
     deletadoEm?: Date | null;
+    parcelas: any;
+    baixaAutomatica: boolean;
 }
 export interface ICategoria{
     id: number;
@@ -123,9 +125,12 @@ export class PagamentoTransacao {
     Valor: number = 0;
     Nsu?: string | null = null;
     FinMetodoPagamentoId: number = 0;
+    ContaBancariaId: number | null = null;
     Porcentagem: number = 0;
     DiasPrevisao: number = 0;
     CaixaId: number = 0;
+    NumeroParcelas: number | null = 0;
+    Pago: boolean = false;
 }
 export interface ClienteTransacao {
     id: number,
@@ -138,14 +143,14 @@ export enum FormaPagamento{
     Credito = 3,
     Outros = 4,
 }
-export interface MetodoPagamento {
-    id: number,
-    categoriaPagamento: FormaPagamento,
-    codigoAutorizacao: boolean,
-    taxa: number,
-    diasFaturamento: number,
-    descricao: string
-}
+// export interface MetodoPagamento {
+//     id: number,
+//     categoriaPagamento: FormaPagamento,
+//     codigoAutorizacao: boolean,
+//     taxa: number,
+//     diasFaturamento: number,
+//     descricao: string
+// }
 export class TransacaoDTO{
     Tipo: TipoTransacao = TipoTransacao.Venda;
     ValorTotal: number = 0;
@@ -165,15 +170,19 @@ export class TransacaoItemDTO{
     quantidade: number = 0;
 }
 export class TransacaoPagamentoDTO{
-    Descricao: string = '';
+    Descricao: string | null = '';
     FormaPagamento: FormaPagamento = FormaPagamento.Dinheiro;
+    ContaBancariaId: number | null = null;
     Valor: number = 0;
     Nsu?: string | null = null;
-    FinMetodoPagamentoId: number = 0;
+    FinMetodoPagamentoId: number | null = null;
     PorcentagemPagamento: number = 0;
     DiasPrevisao: number = 0;
     ClienteId: number | null = null;
-    CaixaId: number = 0;
+    CaixaId: number | null = null;
+    TipoTransacao: number = 0;
+    numeroParcelas: number | null = null;
+    Pago: boolean = false;
 }
 
 export enum TipoTransacao{
@@ -211,21 +220,25 @@ export interface TransacaoItemFinanceiro{
     DataInsercao: Date;
 }
 export interface TransacaoPagamentoFinanceiro{
-    Id: number;
-    Descricao: string;
-    CategoriaPagamento: number;
-    Valor: number;
-    ValorCalculado: number;
-    Nsu: string | null;
-    PorcentagemPagamento: number | null;
-    FormaPagamentoId: number;
-    FinMetodoPagamento: IFormaPagamento | null;
-    ClienteId: number | null;
-    Cliente: IClientes | null;
-    TransacaoId: number | null;
-    Transacao: Transacao | null;
-    CaixaId: number;
-    DataPagamentoEfetuado: Date;
-    DataVencimento: Date;
-    Pago: boolean;
+    id: number;
+    descricao: string;
+    categoriaPagamento: number;
+    valor: number;
+    valorCalculado: number;
+    nsu: string | null;
+    porcentagemPagamento: number | null;
+    formaPagamentoId: number | null;
+    finMetodoPagamento?: IFormaPagamento | null;
+    contaBancariaId?: number | null;
+    contaBancaria?: ContaBancaria | null;
+    clienteId: number | null;
+    cliente?: IClientes | null;
+    transacaoId: number | null;
+    transacao?: Transacao | null;
+    caixaId: number | null;
+    dataPagamentoEfetuado: any;
+    dataVencimento: any;
+    pago: boolean;
+    tipoTransacao: number;
+    numeroParcelas: number | null;
 }

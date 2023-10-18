@@ -425,3 +425,13 @@ export const tipoTransacao: IType[] = [
   {code: 3, name: "Devolucao"},
   {code: 4, name: "Comanda"},
 ]
+export const tipoTransacaoPagamento: IType[] = [
+  {
+    code: 0,
+    name: "Receita",
+  },
+  {
+    code: 1,
+    name: "Dispensa",
+  },
+];
