@@ -1,4 +1,5 @@
 ﻿using api.Context;
+using api.DTO.TransacaoPagamento;
 using api.Model;
 using JSmartPDV.DB.DTO.Transacao;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +23,26 @@ namespace api.Services
 
             await _context.SaveChangesAsync();
             return pagamento;
+        }
+        public async Task<dynamic> PostBaixaPagamentosAsync(BaixaDTO baixa)
+        {
+            var Contas = await _context.TransacaoPagamentos.Where(x => baixa.Contas.Contains(x.Id)).ToListAsync();
+            foreach (var conta in Contas)
+            {
+                var porcentagem = baixa.Porcentagem / 100;
+                var calculado = conta.ValorCalculado - conta.ValorCalculado * porcentagem;
+                conta.ValorCalculado = calculado;
+                conta.Pago = true;
+                conta.DataPagamentoEfetuado = baixa.DataPagamento;
+                conta.FormaPagamentoId = baixa.FormaPagamentoId;
+                conta.ContaBancariaId = baixa.ContaBancariaId;
+                conta.Nsu = baixa.Nsu;
+                conta.DataVencimento = baixa.DataPagamento.AddDays(baixa.Dias);
+                conta.NumeroParcelas = baixa.Parcelas;
+            }
+            _context.UpdateRange(Contas);
+            await _context.SaveChangesAsync();
+            return Contas;
         }
     }
 }

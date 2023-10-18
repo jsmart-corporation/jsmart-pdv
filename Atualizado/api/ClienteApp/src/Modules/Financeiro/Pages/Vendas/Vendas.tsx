@@ -1,11 +1,11 @@
 import JSDataGrid from '../../../../JSCommon/Components/JSDataGrid'
 import "./style.css";
-import { CiBank } from "react-icons/ci";
 import { GridColDef } from '@mui/x-data-grid';
 import {tipoTransacao } from '../../../../Common/Containts/ListasDrowDown';
 import { useFinTransacoes } from '../../../../Common/Services/Swr/SwrServices';
 import { maskCurrency } from '../../../../Utils/Formatacoes';
 import moment from 'moment';
+import { BiCartDownload } from 'react-icons/bi';
 
 export default function FinVendas() {
   
@@ -100,7 +100,7 @@ export default function FinVendas() {
     <div className="vendas">
     <div className="top">
         <div className="left">
-          <CiBank className="icon" />
+          <BiCartDownload className="icon" />
           <span>Vendas</span>
         </div>
         <div className="right">

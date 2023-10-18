@@ -3,8 +3,8 @@ import {FaMoneyBillAlt, FaUsersCog} from 'react-icons/fa'
 import {BsBank2} from 'react-icons/bs'
 import {HiDesktopComputer,HiUsers} from 'react-icons/hi'
 import {BiBarcodeReader, BiHome, BiSolidPurchaseTag} from 'react-icons/bi'
-import {TbDeviceDesktopAnalytics} from 'react-icons/tb'
 import { NavLink } from 'react-router-dom';
+import { RiExchangeDollarLine } from 'react-icons/ri'
 
 
 interface ITab {
@@ -41,7 +41,7 @@ export function NavigationMenu({fechaDrawer} : {fechaDrawer(): void}) {
         },
         {
           key: 2,
-          icon: TbDeviceDesktopAnalytics,
+          icon: RiExchangeDollarLine,
           function: () => null,
           link: '/fin/home',
           placeholder: "Financeiro",

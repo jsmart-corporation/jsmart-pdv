@@ -1,10 +1,11 @@
 import './style.css'
 import {HiDesktopComputer} from 'react-icons/hi'
-import {BiBarcodeReader, BiHome} from 'react-icons/bi'
+import {BiHome} from 'react-icons/bi'
 import {TbDeviceDesktopAnalytics} from 'react-icons/tb'
 import { NavLink } from 'react-router-dom';
 import { MouseEventHandler, useContext } from 'react';
 import { TransacaoContext } from '../../../../Common/Context/TransacaoContext';
+import { RiExchangeDollarLine } from 'react-icons/ri';
 
 
 interface ITab {
@@ -66,7 +67,7 @@ export function NavigationMenu({fechaDrawer} : {fechaDrawer(): void}) {
         },
         {
           key: 2,
-          icon: BiBarcodeReader,
+          icon: RiExchangeDollarLine,
           function: () => fechaDrawer(),
           link: '/fin/home',
           placeholder: "Financeiro",

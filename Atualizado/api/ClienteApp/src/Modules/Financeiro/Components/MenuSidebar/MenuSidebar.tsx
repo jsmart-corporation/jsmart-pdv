@@ -1,11 +1,10 @@
 import './style.css'
-import {FaMoneyBillAlt, FaUsersCog} from 'react-icons/fa'
-import {LuComputer} from 'react-icons/lu'
-import {BsBank2} from 'react-icons/bs'
-import {HiDesktopComputer,HiUsers} from 'react-icons/hi'
-import {BiBarcodeReader, BiHome, BiSolidPurchaseTag} from 'react-icons/bi'
+
+import {HiDesktopComputer} from 'react-icons/hi'
+import { BiCartDownload, BiHome} from 'react-icons/bi'
 import {TbDeviceDesktopAnalytics} from 'react-icons/tb'
 import { NavLink } from 'react-router-dom';
+import { RiExchangeDollarFill } from 'react-icons/ri';
 
 
 interface ITab {
@@ -67,7 +66,7 @@ export function NavigationMenu({fechaDrawer} : {fechaDrawer(): void}) {
         },
         {
           key: 2,
-          icon: BiBarcodeReader,
+          icon: RiExchangeDollarFill,
           function: () => fechaDrawer(),
           link: '/fin/planejador',
           placeholder: "Planejador",
@@ -75,7 +74,7 @@ export function NavigationMenu({fechaDrawer} : {fechaDrawer(): void}) {
         },
         {
           key: 3,
-          icon: BiBarcodeReader,
+          icon: BiCartDownload,
           function: () => fechaDrawer(),
           link: '/fin/vendas',
           placeholder: "Vendas",

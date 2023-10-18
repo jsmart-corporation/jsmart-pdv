@@ -1,20 +1,20 @@
-import { Autocomplete, Checkbox, CircularProgress, Dialog, FormControlLabel, InputLabel, MenuItem, Paper, PaperProps,  Select,  Slide, Typography } from '@mui/material';
+import { Dialog, InputLabel, MenuItem, Paper, PaperProps,  Select,  Slide } from '@mui/material';
 import { TransitionProps } from '@mui/material/transitions';
 import React, { useContext, useEffect, useState } from 'react'
 import {IoClose} from 'react-icons/io5'
 import './style.css'
 import { JSTextField } from '../../../../../JSCommon/Components/JSTextField';
-import { IClientes, IFormaPagamento, TransacaoPagamentoFinanceiro } from '../../../../../Common/Interfaces';
+import { IFormaPagamento, TransacaoPagamentoFinanceiro } from '../../../../../Common/Interfaces';
 import { LoadingDialogContext } from '../../../../../JSCommon/Dialogs/LoadingDialog/LoadingDialogContext';
-import { FaTrashAlt } from 'react-icons/fa';
 import { MobileDatePicker } from '@mui/x-date-pickers';
 import dayjs from 'dayjs';
 import { JSSelect } from '../../../../../JSCommon/Components/JSSelect';
-import { tipoTransacaoPagamento } from '../../../../../Common/Containts/ListasDrowDown';
-import { useClienteFiltro, useFormasPagamento } from '../../../../../Common/Services/Swr/SwrServices';
+import { useFormasPagamento } from '../../../../../Common/Services/Swr/SwrServices';
 import { FormatarDecimal, maskCurrency } from '../../../../../Utils/Formatacoes';
-import { PostTransacaoPagamentoAsync } from '../../../../../Common/Services/Axios/TransacaoService';
 import { IParcelas } from '../../../../Administrativo/Components/Dialogs/NovaFormaPagamento/NovaFormaPagamento';
+import { MdPayment } from 'react-icons/md';
+import { GiCardExchange } from 'react-icons/gi';
+import { PostBaixaPagamentoAsync } from '../../../../../Common/Services/Axios/TransacaoService';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -35,15 +35,13 @@ interface IPropsData{
   contas?: any[],
   total: number,
   onClose(): void;
-  onPost?(value: TransacaoPagamentoFinanceiro) :void;
+  onPost?(value: TransacaoPagamentoFinanceiro[]) :void;
 }
 
 export default function BaixarContas({aberto,contas,total,onClose,onPost}: IPropsData) {
-  const [descricao,setDescricao] = useState<string>('');
   const [nsu,setNsu] = useState<string | null>('');
   const [valor,setValor] = useState<string>('0.00');
   const [dataPagamento,setDataPagamento] = useState(dayjs());
-  const [pago,setPago] = useState<boolean>(false);
   const [formaPagamento,setFormaPagamento] = useState<number>(1);
   const [formaPagamentoSelecionada,setFormaPagamentoSelecionada]  = useState<IFormaPagamento | null>(null)
   const [numeroParcela,setNumeroParcela] = useState<number>(1);
@@ -53,22 +51,22 @@ export default function BaixarContas({aberto,contas,total,onClose,onPost}: IProp
   useEffect(() => {
     if(!aberto){
       LimpaCampos()
+    }else{
+      setValor(total.toString())
     }
   },[aberto])
   useEffect(() => {
-    if(formasPagamento == undefined) return
+    if(formasPagamento === undefined) return
     if(formasPagamento && formaPagamento){
       let forma = formasPagamento.find(x => x.id === formaPagamento)
-      if(forma){
+      if(forma !== undefined){
         setFormaPagamentoSelecionada(forma)
       }
     }
-  },[formaPagamento,formasPagamento])
+  },[formaPagamento,formasPagamento,aberto])
   const LimpaCampos = () => {
-    setDescricao('')
     setFormaPagamento(1)
     setFormaPagamentoSelecionada(null)
-    setPago(false)
     setValor('0.00')
     setNsu(null)
     setNumeroParcela(1)
@@ -78,15 +76,16 @@ export default function BaixarContas({aberto,contas,total,onClose,onPost}: IProp
     setNumeroParcela(1)
   },[formaPagamentoSelecionada])
  
-
   const verify = () => {
     let status = true;
-    if(descricao == ""){
+    if((total - parseFloat(valor)) < 0){
+      status = false;
+    }
+    if(formaPagamentoSelecionada?.codigoAutorizacao && (nsu == null || nsu == "")){
       status = false;
     }
     return status;
   }
-  
   
   const getRestante = () => {
     let restante = total - parseFloat(valor);
@@ -94,7 +93,32 @@ export default function BaixarContas({aberto,contas,total,onClose,onPost}: IProp
       return restante
     }else return 0.00
   }
-  
+  const RealizarBaixa = async () => {
+    let parcelas:IParcelas[] = formaPagamentoSelecionada?.categoriaPagamento === 3 && formaPagamentoSelecionada.parcelas ? JSON.parse(formaPagamentoSelecionada.parcelas) : null;
+    let baixaDto = {
+      contas: contas,
+      formaPagamentoId: formaPagamentoSelecionada?.id,
+      nsu: nsu,
+      contaBancariaId: formaPagamentoSelecionada?.contaBancariaId,
+      valor: parseFloat(valor),
+      parcelas: formaPagamentoSelecionada?.categoriaPagamento === 3 ? numeroParcela : null,
+      dataPagamento: dataPagamento,
+      dias: formaPagamentoSelecionada?.diasFaturamento,
+      porcentagem: parcelas ? parcelas.find(x => x.parcela === numeroParcela)?.taxa : formaPagamentoSelecionada?.taxa
+    }
+    if(getRestante() > 0){
+
+    }else{
+      AbrirDialogoLoading("Realizando Baixa, Aguarde...")
+      try{
+        let response = (await PostBaixaPagamentoAsync(baixaDto)).data;
+        onPost!(response);
+      }finally{
+        FechaDialogoLoading()
+      }
+    }
+    console.log(contas)
+  }
   return (
     <Dialog
         open={aberto}
@@ -113,9 +137,30 @@ export default function BaixarContas({aberto,contas,total,onClose,onPost}: IProp
             </div>
           </div>
           <div className="middle">
+            
+            <div className="left">
+              <div className="row">
+                  <MdPayment className="icon"/>
+                  <div className="right">
+                    <div className="valor">
+                      {maskCurrency(total)}
+                    </div>
+                    <div className="restante">Total</div>
+                  </div>
+              </div>
+              <div className="row">
+                  <GiCardExchange className="icon small"/>
+                  <div className="right">
+                    <div className="valor">
+                      {maskCurrency(getRestante())}
+                    </div>
+                    <div className="restante">Restante</div>
+                  </div>
+              </div>
+            </div>
             <div className="top">
               <div className="bottom">
-                <JSTextField value={maskCurrency(valor)} onChange={(x) => setValor(FormatarDecimal(x.target.value))} sx={{maxWidth: 150}} label="Valor" fullWidth/>
+                <JSTextField value={maskCurrency(valor)} onChange={(x) => setValor(FormatarDecimal(x.target.value))} sx={{maxWidth: 180}} label="Valor" fullWidth/>
                 <JSSelect fullWidth >
                   <InputLabel id="demo-simple-select-label">Forma Pagamento</InputLabel>
                   <Select
@@ -140,7 +185,7 @@ export default function BaixarContas({aberto,contas,total,onClose,onPost}: IProp
               {
                 (formaPagamentoSelecionada && formaPagamentoSelecionada.categoriaPagamento === 3 ) &&
                 formaPagamentoSelecionada.parcelas && 
-                  <JSSelect fullWidth sx={{maxWidth: 100}}>
+                  <JSSelect fullWidth sx={{maxWidth: 180}}>
                     <InputLabel id="demo-simple-select-label">Parcelas</InputLabel>
                     <Select
                       // disabled={formaPagamentoEditar?.permantente}
@@ -158,23 +203,17 @@ export default function BaixarContas({aberto,contas,total,onClose,onPost}: IProp
                     </Select>
                   </JSSelect>                  
                 }
-                  {formaPagamentoSelecionada?.codigoAutorizacao &&  <JSTextField value={nsu} onChange={(x) => setNsu(x.target.value)} label="NSU" fullWidth sx={{maxWidth: 200}}/>}
-                <FormControlLabel sx={{width: '100%'}}  checked={pago} control={<Checkbox  onChange={(x: React.ChangeEvent<HTMLInputElement>) => setPago(x.target.checked)} />} label="Pago" />
-                {pago &&
-                <MobileDatePicker value={dataPagamento} onChange={(newValue) => setDataPagamento(newValue?? dayjs)} sx={{minWidth: 140}} label="Data Pagamento" />
-                }
+                  {formaPagamentoSelecionada?.codigoAutorizacao &&  <JSTextField value={nsu} onChange={(x) => setNsu(x.target.value)} label="NSU" fullWidth/>}
+                
+                <MobileDatePicker value={dataPagamento} onChange={(newValue) => setDataPagamento(newValue?? dayjs)} sx={{width: 180,minWidth: 180}} label="Data Pagamento" />
+                
                 {/* <MobileDatePicker sx={{minWidth: 150}}value={dataMovimento} onChange={(newValue) => setDataMovimento(newValue?? dayjs)}  label="Data Movimento" defaultValue={dayjs('2022-04-17')} /> */}
-              </div>
-            </div>
-            <div className="left">
-              <div className="row">
-                  
               </div>
             </div>
           </div>
           <div className="bottom">
               <div className="div"></div>
-              <div className={"button-salvar " + (!verify() ? 'disabled' : '')} onClick={() => null}>
+              <div className={"button-salvar " + (!verify() ? 'disabled' : '')} onClick={() => RealizarBaixa()}>
                 <span>Salvar</span>
               </div>
           </div>

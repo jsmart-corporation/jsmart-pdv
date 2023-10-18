@@ -35,9 +35,48 @@
 .baixar-contas > .middle{
     margin: 5px 0;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex: 1;
 }
+.baixar-contas > .middle > .left{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 20px;
+    margin: 0 15px 15px 15px;
+}   
+.baixar-contas > .middle > .left > .row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    box-shadow: 0 0 0.4rem #00000044;
+    flex: 1;
+    border-radius: 5px;
+}
+.baixar-contas > .middle > .left > .row > .right > .valor{
+    font-size: 2rem;
+    font-weight: 500;
+}
+.baixar-contas > .middle > .left > .row > .right > .restante{
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+.baixar-contas > .middle > .left > .row > .right{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+.baixar-contas > .middle > .left > .row > .icon{
+    font-size: 3rem;
+    color: rgb(20, 189, 124);
+}
+.baixar-contas > .middle > .left > .row > .icon.small{
+    font-size: 2.5rem;
+}
+
 .baixar-contas > .middle > .top{
     margin: 5px 0;
     padding: 15px;

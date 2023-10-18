@@ -1,4 +1,5 @@
 ﻿using api.Controllers.Base;
+using api.DTO.TransacaoPagamento;
 using api.Model;
 using api.Services;
 using JSmartPDV.DB.DTO.Transacao;
@@ -22,7 +23,11 @@ namespace api.Controllers
 
         [HttpGet("all")]
         public async Task<ActionResult> GetFinTransacoesPagamento() => Ok(await _service.GetFinTransacoesPagamento());
+
         [HttpPost("planejador")]
         public async Task<ActionResult> PostTransacaoPlanejador(TransacaoPagamento pagamento) => Ok(await _service.PostTransacaoPagamentosAsync(pagamento));
+
+        [HttpPost("baixa")]
+        public async Task<ActionResult> PostBaixaPagamentoAsync(BaixaDTO baixa) => Ok(await _service.PostBaixaPagamentosAsync(baixa));
     }
 }

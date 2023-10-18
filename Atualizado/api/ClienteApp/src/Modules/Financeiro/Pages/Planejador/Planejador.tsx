@@ -11,7 +11,8 @@ import { useEffect, useState } from 'react';
 import { AiFillEdit } from 'react-icons/ai';
 import {HiOutlineDocumentDownload} from 'react-icons/hi'
 import BaixarContas from '../../Components/Dialogs/BaixarContas/BaixarContas';
-import { IFormaPagamento, TransacaoPagamentoFinanceiro } from '../../../../Common/Interfaces';
+import { RiExchangeDollarFill } from 'react-icons/ri';
+
 
 export default function Planejador() {
   
@@ -19,7 +20,6 @@ export default function Planejador() {
   const [novaTransacao,setNovaTransacao] = useState(false)
   const [pagamentosSelecionados,setPagamentosSelecionados] = useState<GridRowSelectionModel>([])
   const [baixarContas,setBaixarContas] = useState<boolean>(false);
-  const [firstPagamento,setFirstPagamento] = useState<TransacaoPagamentoFinanceiro | null>(null);
   const columnsPayment: GridColDef[] = [
     {
       field: "descricao",
@@ -131,7 +131,7 @@ export default function Planejador() {
     <div className="planejador">
     <div className="top">
         <div className="left">
-          <CiBank className="icon" />
+          <RiExchangeDollarFill className="icon" />
           <span>Planejador</span>
         </div>
         <div className="right">
@@ -190,7 +190,7 @@ export default function Planejador() {
         />
       </div>
       <NovaTransacao aberto={novaTransacao} onClose={() => setNovaTransacao(false)}/>
-      <BaixarContas aberto={baixarContas} onClose={() => setBaixarContas(false)} total={getTotalContas()}/>
+      <BaixarContas aberto={baixarContas} onClose={() => setBaixarContas(false)} total={getTotalContas()} contas={pagamentosSelecionados}/>
     </div>
   )
 }
