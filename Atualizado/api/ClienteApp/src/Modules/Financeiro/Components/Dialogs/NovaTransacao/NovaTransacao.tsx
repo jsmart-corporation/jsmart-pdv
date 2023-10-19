@@ -1,6 +1,6 @@
 import { Autocomplete, Checkbox, CircularProgress, Dialog, FormControlLabel, InputLabel, MenuItem, Paper, PaperProps,  Select,  Slide } from '@mui/material';
 import { TransitionProps } from '@mui/material/transitions';
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import {IoClose} from 'react-icons/io5'
 import './style.css'
 import { JSTextField } from '../../../../../JSCommon/Components/JSTextField';
@@ -35,11 +35,9 @@ interface IPropsData{
   categoriaEditar?: TransacaoPagamentoFinanceiro | null,
   onClose(): void;
   onPost?(value: TransacaoPagamentoFinanceiro) :void;
-  onEdit?(value: TransacaoPagamentoFinanceiro) :void;
-  onRemove?(value: TransacaoPagamentoFinanceiro) :void;
 }
 
-export default function NovaTransacao({aberto,categoriaEditar,onClose,onPost,onEdit,onRemove}: IPropsData) {
+export default function NovaTransacao({aberto,categoriaEditar,onClose,onPost}: IPropsData) {
   const [descricao,setDescricao] = useState<string>('');
   const [buscaCliente,setBuscaCliente] = useState<string>('');
   const [nsu,setNsu] = useState<string | null>('');
@@ -54,7 +52,7 @@ export default function NovaTransacao({aberto,categoriaEditar,onClose,onPost,onE
   const [cliente,setCliente] = useState<IClientes | null>(null)
   const {formasPagamento,isLoading} = useFormasPagamento()
   const {clientes,isClienteLoading} = useClienteFiltro(buscaCliente)
-
+  const AutoCompleteRef = useRef<any>(null)
   const {AbrirDialogoLoading,FechaDialogoLoading} = useContext(LoadingDialogContext)
   useEffect(() => {
     if(!aberto){
@@ -76,12 +74,17 @@ export default function NovaTransacao({aberto,categoriaEditar,onClose,onPost,onE
   const LimpaCampos = () => {
     setDescricao('')
     setFormaPagamento(1)
-    setFormaPagamentoSelecionada(null)
     setCliente(null)
     setPago(false)
     setValor('0.00')
     setNsu(null)
-    setBuscaCliente('')
+    if(buscaCliente !== ""){
+      if(AutoCompleteRef){
+        const ele = AutoCompleteRef.current?.getElementsByClassName('MuiAutocomplete-clearIndicator')[0];
+        if (ele) ele.click();
+        }
+      }
+     
     setNumeroParcela(1)
   }
   useEffect(() => {
@@ -276,6 +279,7 @@ export default function NovaTransacao({aberto,categoriaEditar,onClose,onPost,onE
                                 </li>
                             );
                         }}
+                        ref={AutoCompleteRef}
                         renderInput={(params) => (
                             <JSTextField
                                 {...params}

@@ -69,8 +69,6 @@ export default function Login() {
       sessionStorage.setItem("acess_token",response)
       Login()
       navigate('/pdv/venda')
-    }catch{
-      toast.error("Usuario ou senhas incorretos")
     }
     finally{
       FechaDialogoLoading()

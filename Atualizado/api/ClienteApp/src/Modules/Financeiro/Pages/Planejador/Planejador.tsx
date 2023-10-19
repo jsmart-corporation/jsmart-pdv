@@ -16,6 +16,7 @@ import dayjs, { Dayjs } from 'dayjs';
 import { SingleInputDateRangeField } from '@mui/x-date-pickers-pro/SingleInputDateRangeField';
 import { DateRange } from '@mui/x-date-pickers-pro';
 import { JSDataPicker } from '../../../../JSCommon/Components/JSDataPicker';
+import { toast } from 'react-toastify';
 
 export default function Planejador() {
   
@@ -25,7 +26,7 @@ export default function Planejador() {
     dayjs(),
     dayjs(),
   ]);
-  const {pagamentos,isLoading} = useFinPlanejador(data[0]?.toISOString(),data[1]?.toISOString());
+  const {pagamentos,isLoading,mutate} = useFinPlanejador(data[0]?.toISOString(),data[1]?.toISOString());
   const [baixarContas,setBaixarContas] = useState<boolean>(false);
   const columnsPayment: GridColDef[] = [
     {
@@ -134,7 +135,26 @@ export default function Planejador() {
 
   }
  },[pagamentosSelecionados])
- useEffect(() => {},[data])
+ const OnEditPlanejador = () => {
+  mutate()
+  if(pagamentosSelecionados.length > 0){
+    setPagamentosSelecionados([])
+    setBaixarContas(false)
+  }
+  setNovaTransacao(false)
+ }
+ const handleVerifyClienteConta = () => {
+  const pagamentosFiltro = pagamentos?.filter(x => pagamentosSelecionados.includes(x.id))
+  if(pagamentosFiltro){
+    const firstCliente = pagamentosFiltro[0].clienteId;
+    const todosIguais = pagamentosFiltro.every(pagamento => pagamento.clienteId === firstCliente);
+    if(todosIguais){
+      setBaixarContas(true)
+    }else{
+      toast.error("Para realizar uma baixa os clientes devem ser iguals")
+    }
+  }
+ }
   return (
     <div className="planejador">
     <div className="top">
@@ -153,7 +173,7 @@ export default function Planejador() {
             pagamentosSelecionados.length > 0 && 
             <div
               className="button-baixar p-ripple"
-              onClick={() => setBaixarContas(!baixarContas)}
+              onClick={() => handleVerifyClienteConta()}
               >
               <HiOutlineDocumentDownload className="icon"/>
               <span>Baixar Contas</span>
@@ -203,8 +223,8 @@ export default function Planejador() {
           }}
         />
       </div>
-      <NovaTransacao aberto={novaTransacao} onClose={() => setNovaTransacao(false)}/>
-      <BaixarContas aberto={baixarContas} onClose={() => setBaixarContas(false)} total={getTotalContas()} contas={pagamentosSelecionados}/>
+      <NovaTransacao aberto={novaTransacao} onClose={() => setNovaTransacao(false)} onPost={() => OnEditPlanejador()}/>
+      <BaixarContas aberto={baixarContas} onClose={() => setBaixarContas(false)} total={getTotalContas()} onPost={() => OnEditPlanejador()} contas={pagamentosSelecionados}/>
     </div>
   )
 }
